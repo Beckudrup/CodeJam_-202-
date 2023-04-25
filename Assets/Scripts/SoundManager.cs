@@ -8,9 +8,8 @@ public class SoundManager : MonoBehaviour
     /// Soundmanager Singleton source by Tarodev
     /// https://www.youtube.com/watch?v=tEsuLTpz_DU&t=13s&ab_channel=Tarodev
     /// </summary>
-    /// 
     
-    [SerializeField] private AudioSource BGM, moo;
+    [SerializeField] private AudioSource BGM, moo, startsound;
     public static SoundManager Instance;
 
     void awake()
@@ -27,6 +26,6 @@ public class SoundManager : MonoBehaviour
     }
     public void PlaySound(AudioClip clip)
     {
-
+        moo.PlayOneShot(clip);
     }
 }
