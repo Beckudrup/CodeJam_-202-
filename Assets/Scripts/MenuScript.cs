@@ -7,23 +7,23 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField] Camera mainCam;
-    [SerializeField] GameObject startButton;
-    [SerializeField] int camMenu = 0;
-    [SerializeField] int camStart = 70;
+    [SerializeField] GameObject startButton, hornButtons;
+    [SerializeField] int camMenuSize = 0, camEndSize = 70;
     [SerializeField] float camSpeed;
     bool buttonPressed;
     
     void Start()
     {
-        mainCam.fieldOfView = camMenu;
+        mainCam.fieldOfView = camMenuSize;
     }
 
     void Update()
     {
         if (!buttonPressed) return;
-        var newCamSize = Mathf.Lerp(mainCam.fieldOfView, camStart, Time.deltaTime * camSpeed);
+        var newCamSize = Mathf.Lerp(mainCam.fieldOfView, camEndSize, Time.deltaTime * camSpeed);
         mainCam.fieldOfView = newCamSize;
-        if (Math.Abs(mainCam.fieldOfView - camStart) > 5) return;
+        if (Math.Abs(mainCam.fieldOfView - camEndSize) > 5) return;
+        hornButtons.SetActive(true);
         buttonPressed = false;
     }
 
