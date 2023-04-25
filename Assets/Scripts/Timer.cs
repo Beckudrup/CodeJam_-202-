@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
         //{
 
         timeLeft -= Time.deltaTime;
-        timer.text = timeLeft.ToString(0.00);
+        timer.text = timeLeft.ToString("0.00");
         if (timeLeft <= 0)
         {
             //Spil animation og stop lvl
