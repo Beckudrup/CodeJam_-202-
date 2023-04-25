@@ -152,8 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7910e0a15e2142648982a39358510812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 0}
-  timeLeft: 10
 --- !u!4 &18811143
 Transform:
   m_ObjectHideFlags: 0
@@ -321,8 +319,9 @@ GameObject:
   - component: {fileID: 90259576}
   - component: {fileID: 90259575}
   - component: {fileID: 90259574}
+  - component: {fileID: 90259577}
   m_Layer: 5
-  m_Name: RightButton
+  m_Name: RightHorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -431,6 +430,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90259572}
   m_CullTransparentMesh: 1
+--- !u!114 &90259577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90259572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 18811142}
+          m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+          m_MethodName: RightButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 344624646}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: RightButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 18811142}
+          m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+          m_MethodName: RightButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 344624646}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: RightButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &94835107
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247581738}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: HornButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -810,8 +878,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 0
   moovementSpeed: {fileID: 1377975628}
-  LeftButton: {fileID: 787311120}
-  RightButton: {fileID: 90259572}
+  LeftHorn: {fileID: 0}
+  RightHorn: {fileID: 0}
+  leftButton: 0
+  rightButton: 0
 --- !u!224 &344624647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1167,8 +1237,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 100
   moovementSpeed: {fileID: 0}
-  LeftButton: {fileID: 0}
-  RightButton: {fileID: 0}
 --- !u!95 &455515402
 Animator:
   serializedVersion: 5
@@ -1201,8 +1269,9 @@ GameObject:
   - component: {fileID: 787311124}
   - component: {fileID: 787311123}
   - component: {fileID: 787311122}
+  - component: {fileID: 787311125}
   m_Layer: 5
-  m_Name: LeftButton
+  m_Name: LeftHorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1311,6 +1380,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787311120}
   m_CullTransparentMesh: 1
+--- !u!114 &787311125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787311120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 18811142}
+          m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+          m_MethodName: LeftButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 344624646}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: LeftButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 18811142}
+          m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+          m_MethodName: LeftButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 344624646}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: LeftButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &819109084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,9 +2076,6 @@ MonoBehaviour:
   mainCam: {fileID: 455515399}
   startButton: {fileID: 926746412}
   hornButtons: {fileID: 247581737}
-  cowCam: {fileID: 455515402}
-  camStartSize: 0
-  camEndSize: 70
 --- !u!4 &959970818
 Transform:
   m_ObjectHideFlags: 0
