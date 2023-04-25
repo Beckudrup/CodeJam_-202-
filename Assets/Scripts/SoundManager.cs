@@ -25,12 +25,20 @@ public class SoundManager : MonoBehaviour
         }
     }
     public void PlaySound(AudioClip clip)
-    {
+        {
         bgm.PlayOneShot(clip);
-        moo.PlayOneShot(clip);
-        gunshot.PlayOneShot(clip);
-        running.PlayOneShot(clip);
-        cowbell.PlayOneShot(clip);
-        chicken.PlayOneShot(clip);
-    }
+        // moo.PlayOneShot(clip);
+        // gunshot.PlayOneShot(clip);
+        // running.PlayOneShot(clip);
+        // cowbell.PlayOneShot(clip);
+        // chicken.PlayOneShot(clip);
+        }
+    
+        // public void BGMSound(AudioClip clip) => bgm.PlayOneShot(clip);
+        // public void MooSound(AudioClip clip) => moo.PlayOneShot(clip);
+        // public void GunshotSound(AudioClip clip) => gunshot.PlayOneShot(clip);
+        // public void RunningSound(AudioClip clip) => running.PlayOneShot(clip);
+        // public void CowbellSound(AudioClip clip) => cowbell.PlayOneShot(clip);
+        // public void ChickenSound(AudioClip clip) => chicken.PlayOneShot(clip);
+        // public void Gunshot(AudioClip clip) => gunshot.PlayOneShot(clip);
 }
