@@ -8,29 +8,31 @@ public class MenuScript : MonoBehaviour
 {
     [SerializeField] Camera mainCam;
     [SerializeField] GameObject startButton, hornButtons;
-    [SerializeField] int camMenuSize = 0, camEndSize = 70;
-    [SerializeField] float camSpeed;
-    bool buttonPressed;
+    [SerializeField] Animator cowCam;
+    [SerializeField] int camStartSize = 0, camEndSize = 70;
+    
+    bool startButtonPressed;
     
     void Start()
     {
         hornButtons.SetActive(false);
-        mainCam.fieldOfView = camMenuSize;
+        mainCam.fieldOfView = camStartSize;
     }
 
     void Update()
     {
-        if (!buttonPressed) return;
-        var newCamSize = Mathf.Lerp(mainCam.fieldOfView, camEndSize, Time.deltaTime * camSpeed);
-        mainCam.fieldOfView = newCamSize;
-        if (Math.Abs(mainCam.fieldOfView - camEndSize) > 5) return;
+        if (mainCam.fieldOfView < camEndSize - 1) return;
         hornButtons.SetActive(true);
-        buttonPressed = false;
     }
 
     public void StartGame()
     {
-        buttonPressed = true;
+        cowCam.SetTrigger("StartGame");
         startButton.SetActive(false);
+    }
+
+    public void EndGame() //Only public to be access by test button 
+    {
+        cowCam.SetTrigger("GameFinish");
     }
 }
