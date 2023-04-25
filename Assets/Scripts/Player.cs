@@ -7,7 +7,6 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 0;
-    //[SerializeField] GameObject cylinder;
     Transform cylinderTransform;
 
     public TMP_Text moovementSpeed; //Cows speed 
@@ -17,7 +16,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //cylinderTransform = cylinder.GetComponent < Transform>();
         cylinderTransform = GameObject.Find("Cylinder").GetComponent<Transform>();
     }
 
