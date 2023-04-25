@@ -13,7 +13,7 @@ public class Score : MonoBehaviour
 
     void Start()
     {
-        highscore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+        highscore.text = "Highscore: " + PlayerPrefs.GetInt("HighScore", 0);
         score.text = "Score: " + distanceTravelled;
     }
 
