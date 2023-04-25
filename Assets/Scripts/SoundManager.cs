@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     /// <summary>
-    /// Soundmanager Singleton source by Tarodev
+    /// Soundmanager Singleton inspiration from Tarodev 
     /// https://www.youtube.com/watch?v=tEsuLTpz_DU&t=13s&ab_channel=Tarodev
     /// </summary>
     
