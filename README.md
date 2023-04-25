@@ -1,6 +1,9 @@
 # Moo gaming
  CodeJam p2 moo
-Participating students
+
+
+Participating students:
+
 
 Christoffer Beck Oudrup
 
