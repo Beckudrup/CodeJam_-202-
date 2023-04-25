@@ -5,9 +5,12 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     /// <summary>
-    /// Singleton source by Tarodev
+    /// Soundmanager Singleton source by Tarodev
     /// https://www.youtube.com/watch?v=tEsuLTpz_DU&t=13s&ab_channel=Tarodev
     /// </summary>
+    /// 
+    
+    [SerializeField] private AudioSource BGM, moo;
     public static SoundManager Instance;
 
     void awake()
@@ -16,12 +19,14 @@ public class SoundManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
         }
         else
         {
             Destroy(gameObject);
         }
     }
+    public void PlaySound(AudioClip clip)
+    {
 
+    }
 }
