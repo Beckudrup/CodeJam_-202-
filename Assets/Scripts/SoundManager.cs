@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -9,10 +10,10 @@ public class SoundManager : MonoBehaviour
     /// https://www.youtube.com/watch?v=tEsuLTpz_DU&t=13s&ab_channel=Tarodev
     /// </summary>
     
-    [SerializeField] private AudioSource BGM, moo, startsound;
+    [SerializeField] private AudioSource bgm, moo, gunshot, running, cowbell, chicken;
     public static SoundManager Instance;
 
-    void awake()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -26,6 +27,11 @@ public class SoundManager : MonoBehaviour
     }
     public void PlaySound(AudioClip clip)
     {
+        bgm.PlayOneShot(clip);
         moo.PlayOneShot(clip);
+        gunshot.PlayOneShot(clip);
+        running.PlayOneShot(clip);
+        cowbell.PlayOneShot(clip);
+        chicken.PlayOneShot(clip);
     }
 }
