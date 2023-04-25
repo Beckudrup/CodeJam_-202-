@@ -14,6 +14,7 @@ public class MenuScript : MonoBehaviour
     
     void Start()
     {
+        hornButtons.SetActive(false);
         mainCam.fieldOfView = camMenuSize;
     }
 
