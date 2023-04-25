@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
     Transform cylinderTransform;
 
     public TMP_Text moovementSpeed; //Cows speed 
-    [SerializeField] private GameObject LeftButton, RightButton;
-
+    [SerializeField] private GameObject LeftHorn, RightHorn;
+    public bool leftButton, rightButton;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,12 +23,23 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
 
-        //if(LeftButton && RightButton)
-        //{
+        if (leftButton && rightButton)
+            {
             playerSpeed = Input.acceleration.y*50;
-            moovementSpeed.text = playerSpeed.ToString("0.00");
+            if (playerSpeed <= 0)
+                playerSpeed *= -1;
+            //moovementSpeed.text = Input.accelerationEventCount.ToString("0.00");
+            moovementSpeed.text = playerSpeed.ToString("0.00"); //Kommenteret ud for nu da det kun virker på mobil
             cylinderTransform.Rotate(0, playerSpeed * Time.deltaTime, 0);
         Debug.Log(playerSpeed);
-        //}
+        }
+    }
+    public void LeftButton()
+    {
+        leftButton = !leftButton;
+    }
+    public void RightButton()
+    {
+        rightButton = !rightButton;
     }
 }
