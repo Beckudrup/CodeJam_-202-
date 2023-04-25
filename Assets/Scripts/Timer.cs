@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Timer : MonoBehaviour
 {
-
-    public float timer = 10.0f;
+    public TMP_Text timer;
+    public float timeLeft = 10.0f;
 
     // Update is called once per frame
     void Update()
@@ -13,8 +13,9 @@ public class Timer : MonoBehaviour
         //if(LeftButton && RightButton)
         //{
 
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        timeLeft -= Time.deltaTime;
+        timer.text = timeLeft.ToString(0.00);
+        if (timeLeft <= 0)
         {
             //Spil animation og stop lvl
         }
