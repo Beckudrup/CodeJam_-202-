@@ -8,24 +8,32 @@ public class Score : MonoBehaviour
     // Inspired by: https://www.youtube.com/watch?v=vZU51tbgMXk
     public TextMeshProUGUI score;
     public TextMeshProUGUI highscore;
+    public Player playerScript;
 
-    private int distanceTravelled = 100;
+    float distance = 0.5f;
+    float scoreValue;
+    int highscoreValue;
 
     void Start()
     {
+        highscoreValue = PlayerPrefs.GetInt("HighScore",0);
         highscore.text = "Highscore: " + PlayerPrefs.GetInt("HighScore", 0);
-        score.text = "Score: " + distanceTravelled;
+        score.text = "Score: " + scoreValue + " m";
+
     }
 
     void Update()
     {
-        score.text = "Score: " + distanceTravelled;
+        scoreValue += distance * playerScript.shakeMoveSpeed;
+        score.text = "Score: " + scoreValue.ToString("0") + " m";
+
+        highscore.text = highscoreValue < scoreValue ? "Highscore: "+scoreValue.ToString("0") + " m": highscore.text;
     }
 
     void UpdateHighScore()
-    {
-        if (distanceTravelled > PlayerPrefs.GetInt("HighScore", 0)) ;
-        PlayerPrefs.SetInt("HighScore", distanceTravelled);
+    { // Måske skal distancetravelled være score.text
+        if (scoreValue > PlayerPrefs.GetInt("HighScore", 0))
+            PlayerPrefs.SetFloat("HighScore", scoreValue);
     }
 }
 
