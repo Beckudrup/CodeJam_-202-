@@ -1176,9 +1176,9 @@ MonoBehaviour:
   spawnPositionY: -1450
   spawnPositionZ: -590
   sceneryObjects:
-  - {fileID: 673908199420755022, guid: f572e64dcdf3ca64293a580e154e2ce3, type: 3}
-  - {fileID: 673908199420755022, guid: f572e64dcdf3ca64293a580e154e2ce3, type: 3}
-  - {fileID: 673908199420755022, guid: f572e64dcdf3ca64293a580e154e2ce3, type: 3}
+  - {fileID: 919132149155446097, guid: 26685b7624e3442908937a87373ded94, type: 3}
+  - {fileID: 919132149155446097, guid: 26685b7624e3442908937a87373ded94, type: 3}
+  - {fileID: 919132149155446097, guid: 26685b7624e3442908937a87373ded94, type: 3}
 --- !u!4 &2085217812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 673908199420755023, guid: f572e64dcdf3ca64293a580e154e2ce3, type: 3}
