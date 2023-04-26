@@ -37,7 +37,7 @@ public class SoundManager : MonoBehaviour
        }
 
     /// <summary>
-    /// ES- Should be able to randomize sound effects by taking inspiration from this:
+    /// We Should be able to randomize sound effects by taking inspiration from this:
     /// https://www.youtube.com/watch?v=lqyzGntF5Hw&t=12s
     ///(not used yet)
     /// </summary>

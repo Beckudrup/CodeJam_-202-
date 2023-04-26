@@ -9,11 +9,15 @@ public class SoundPlayer : MonoBehaviour
     /// https://www.youtube.com/watch?v=tEsuLTpz_DU&t=13s&ab_channel=Tarodev
     /// </summary>
     /// 
+    // ES- Audioclip is an array/list so when you call it's name clip you call everything
+    // in the list. 
     [SerializeField] private AudioClip clip;
-    // Start is called before the first frame update
+    
     
     void Start()
     {
         SoundManager.Instance.PlaySound(clip);
     }
+
+
 }
