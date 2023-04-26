@@ -11,23 +11,29 @@ public class Score : MonoBehaviour
     public Player playerScript;
    
     private float distance = 0.5f;
-    private float distanceTravelled;
+    private float scoreValue;
+    private int highscoreValue;
 
     void Start()
     {
+        highscoreValue = PlayerPrefs.GetInt("HighScore",0);
         highscore.text = "Highscore: " + PlayerPrefs.GetInt("HighScore", 0);
+        score.text = "Score: " + scoreValue + " m";
+
     }
 
     void Update()
     {
-        distanceTravelled += distance * playerScript.shakeMoveSpeed;
-        score.text = "Score: " + distanceTravelled + " meters travelled";
+        scoreValue += distance * playerScript.shakeMoveSpeed;
+        score.text = "Score: " + scoreValue.ToString("0") + " m";
+
+        highscore.text = highscoreValue < scoreValue ? "Highscore: "+scoreValue.ToString("0") + " m": highscore.text;
     }
 
     void UpdateHighScore()
     { // Måske skal distancetravelled være score.text
-        if (distanceTravelled > PlayerPrefs.GetInt("HighScore", 0)) ;
-        PlayerPrefs.SetFloat("HighScore", distanceTravelled);
+        if (scoreValue > PlayerPrefs.GetInt("HighScore", 0))
+        PlayerPrefs.SetFloat("HighScore", scoreValue);
     }
 }
 
