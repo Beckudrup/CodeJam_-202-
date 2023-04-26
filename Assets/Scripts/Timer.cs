@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(leftButton && rightButton)
+        if(leftButton && rightButton && timeLeft<=0)
         {
 
         timeLeft -= Time.deltaTime;
@@ -27,11 +27,11 @@ public class Timer : MonoBehaviour
     }
     public void LeftButton()
     {
-        leftButton = !leftButton;
+        leftButton = true;
     }
     public void RightButton()
     {
-        rightButton =!rightButton;
+        rightButton = true;
     }
 
 }
