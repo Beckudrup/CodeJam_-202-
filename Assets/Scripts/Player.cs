@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Movement();
 
         if (leftButton && rightButton)
             {
@@ -80,7 +81,7 @@ public class Player : MonoBehaviour
     {
         rightButton = !rightButton;
     }
-
+    
     void DistortCamera()
     {
         mainCam.fieldOfView += shakeMoveSpeed/5;
@@ -90,8 +91,44 @@ public class Player : MonoBehaviour
 
     void UnDistortCamera()
     {
-        mainCam.fieldOfView -= shakeMoveSpeed/10;
+        mainCam.fieldOfView -= shakeMoveSpeed / 10;
         mainCam.fieldOfView = mainCam.fieldOfView < minCamFOV ? minCamFOV : mainCam.fieldOfView;
         //mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, minCamFOV, shakeMoveSpeed * Time.deltaTime);
+    }
+
+    void Movement()
+    {
+        if (leftButton && rightButton)
+        {
+            var shake = Input.acceleration.magnitude;
+            cowCamAnimator.SetTrigger("isRiding");
+            if (shake > shakeThreshold)
+            {
+                shakeMoveSpeed += shake * shakeMultiplier;
+                cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
+
+            }
+            else
+            {
+                slowDown();
+                cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
+
+            }
+        }
+        else
+        {
+            slowDown();
+            cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
+
+        }
+
+        var textToMoovementSpeed = shakeMoveSpeed * 10;
+        moovementSpeed.text = textToMoovementSpeed.ToString("0.00") + " km/t";
+    }
+    void slowDown()
+    {
+        shakeMoveSpeed -= (shakeMultiplier + shakeMultiplier);
+        //Godt til threshholds (minder om et if statement) (ser om shakeMoveSpeed er mindre end 0 og s�tter derefter det til 0)
+        shakeMoveSpeed = shakeMoveSpeed < 0 ? 0 : shakeMoveSpeed;
     }
 }

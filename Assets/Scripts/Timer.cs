@@ -11,17 +11,22 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(leftButton && rightButton && timeLeft<=0)
+        if(leftButton && rightButton)
         {
+            if (timeLeft <= 0)
+            {
+                //Spil animation og stop lvl
+                leftButton = false;
+                rightButton = false;
+            }
+            else
+            {
+                timer.text = timeLeft.ToString("0.0"); //Kommenteret ud for nu da det kun virker på mobil
 
-        timeLeft -= Time.deltaTime;
-        timer.text = timeLeft.ToString("0.00"); //Kommenteret ud for nu da det kun virker på mobil
-        if (timeLeft <= 0)
-        {
-            //Spil animation og stop lvl
-            leftButton = false;
-            rightButton = false;
-        }
+                timeLeft -= Time.deltaTime;
+
+            }
+
         }
 
     }
