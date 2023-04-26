@@ -26,37 +26,9 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    public void FixedUpdate()
     {
-
-        if (leftButton && rightButton)
-            {
-            /*
-            playerSpeed = Input.acceleration.y*50;
-            if (playerSpeed <= 0)
-                playerSpeed *= -1;
-            /*moovementSpeed.text = Input.accelerationEventCount.ToString("0.00");
-            moovementSpeed.text = playerSpeed.ToString("0.00"); //Kommenteret ud for nu da det kun virker p� mobil
-            cylinderTransform.Rotate(0, playerSpeed * Time.deltaTime, 0);
-            */
-            var shake = Input.acceleration.magnitude;
-            if (shake > shakeThreshold) { 
-                shakeMoveSpeed += shake * shakeMultiplier;
-            }
-            else
-            {
-                shakeMoveSpeed -= shake * (shakeMultiplier+shakeMultiplier);
-                //Godt til threshholds (minder om et if statement) (ser om shakeMoveSpeed er mindre end 0 og s�tter derefter det til 0)
-                shakeMoveSpeed = shakeMoveSpeed < 0 ? 0 : shakeMoveSpeed;
-            }
-
-            cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
-            var textToMoovementSpeed = shakeMoveSpeed * 10;
-            moovementSpeed.text = textToMoovementSpeed.ToString("0.00" + "km/t");
-
-
-            Debug.Log(playerSpeed);
-        }
+        Movement();
     }
     public void LeftButton()
     {
@@ -65,5 +37,29 @@ public class Player : MonoBehaviour
     public void RightButton()
     {
         rightButton = !rightButton;
+    }
+
+    public void Movement()
+    {
+
+        if (leftButton && rightButton)
+        {
+
+            var shake = Input.acceleration.magnitude;
+            if (shake > shakeThreshold)
+            {
+                shakeMoveSpeed += shake * shakeMultiplier;
+            }
+            else
+            {
+                shakeMoveSpeed -= shake * (shakeMultiplier + shakeMultiplier);
+                //Godt til threshholds (minder om et if statement) (ser om shakeMoveSpeed er mindre end 0 og s�tter derefter det til 0)
+                shakeMoveSpeed = shakeMoveSpeed < 0 ? 0 : shakeMoveSpeed;
+            }
+
+            cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
+        }
+        var textToMoovementSpeed = shakeMoveSpeed * 10;
+        moovementSpeed.text = textToMoovementSpeed.ToString("0.00" + "km/t");
     }
 }
