@@ -2325,7 +2325,7 @@ MonoBehaviour:
   hornButtons: {fileID: 247581737}
   endGameButtons: {fileID: 256987893}
   HUDText: {fileID: 1980158330}
-  cowCam: {fileID: 455515402}
+  cowCamAnimator: {fileID: 455515402}
   camStartSize: 0
   camDefaultSize: 70
   camEndGameSize: 25
