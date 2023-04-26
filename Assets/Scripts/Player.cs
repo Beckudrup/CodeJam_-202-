@@ -6,6 +6,8 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
+    Camera mainCam;
+    int maxCamDistance = 150, minCamDistance = 70;
     [SerializeField] float playerSpeed = 0;
     Transform cylinderTransform;
 
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        mainCam = GetComponent<Camera>();
         cylinderTransform = GameObject.Find("Cylinder").GetComponent<Transform>();
     }
 
@@ -51,6 +54,7 @@ public class Player : MonoBehaviour
             }
 
             cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
+            DistortCamera();
             var textToMoovementSpeed = shakeMoveSpeed * 10;
             moovementSpeed.text = textToMoovementSpeed.ToString("0.00" + "km/t");
 
@@ -65,5 +69,12 @@ public class Player : MonoBehaviour
     public void RightButton()
     {
         rightButton = !rightButton;
+    }
+
+    void DistortCamera()
+    {
+        mainCam.fieldOfView += shakeMoveSpeed;
+        mainCam.fieldOfView = mainCam.fieldOfView > maxCamDistance ? maxCamDistance : mainCam.fieldOfView;
+        mainCam.fieldOfView = mainCam.fieldOfView < minCamDistance ? minCamDistance : mainCam.fieldOfView;
     }
 }
