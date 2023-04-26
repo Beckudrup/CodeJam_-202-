@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     float baseMoveSpeed = 2f;
     float shakeMultiplier = 0.005f;
-    float shakeMoveSpeed;
+    public float shakeMoveSpeed;
     float shakeThreshold = 2.0f;
 
 
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
             if (playerSpeed <= 0)
                 playerSpeed *= -1;
             /*moovementSpeed.text = Input.accelerationEventCount.ToString("0.00");
-            moovementSpeed.text = playerSpeed.ToString("0.00"); //Kommenteret ud for nu da det kun virker på mobil
+            moovementSpeed.text = playerSpeed.ToString("0.00"); //Kommenteret ud for nu da det kun virker pï¿½ mobil
             cylinderTransform.Rotate(0, playerSpeed * Time.deltaTime, 0);
             */
             var shake = Input.acceleration.magnitude;
@@ -46,13 +46,13 @@ public class Player : MonoBehaviour
             else
             {
                 shakeMoveSpeed -= shake * (shakeMultiplier+shakeMultiplier);
-                //Godt til threshholds (minder om et if statement) (ser om shakeMoveSpeed er mindre end 0 og sætter derefter det til 0)
+                //Godt til threshholds (minder om et if statement) (ser om shakeMoveSpeed er mindre end 0 og sï¿½tter derefter det til 0)
                 shakeMoveSpeed = shakeMoveSpeed < 0 ? 0 : shakeMoveSpeed;
             }
 
             cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
             var textToMoovementSpeed = shakeMoveSpeed * 10;
-            moovementSpeed.text = textToMoovementSpeed.ToString("0.00");
+            moovementSpeed.text = textToMoovementSpeed.ToString("0.00" + "km/t");
 
 
             Debug.Log(playerSpeed);
