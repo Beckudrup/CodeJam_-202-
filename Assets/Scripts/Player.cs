@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     Camera mainCam;
     int maxCamDistance = 150, minCamDistance = 70;
     Transform cylinderTransform;
-
+    Animator cowAnimator;
     [SerializeField] TMP_Text moovementSpeed; //Cows speed 
     [SerializeField] GameObject LeftHorn, RightHorn;
     [HideInInspector] public bool leftButton, rightButton;
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         mainCam = Camera.main;
+        cowAnimator = GetComponent<Animator>();
         cylinderTransform = GameObject.Find("Cylinder").GetComponent<Transform>();
     }
 
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
             cylinderTransform.Rotate(0, playerSpeed * Time.deltaTime, 0);
             */
             var shake = Input.acceleration.magnitude;
+            cowAnimator.SetTrigger("isRiding");
             if (shake > shakeThreshold) { 
                 shakeMoveSpeed += shake * shakeMultiplier;
             }
@@ -53,7 +55,7 @@ public class Player : MonoBehaviour
             }
 
             cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
-            DistortCamera();
+            
             var textToMoovementSpeed = shakeMoveSpeed * 10;
             moovementSpeed.text = textToMoovementSpeed.ToString("0.00") + " km/t";
             }
@@ -65,12 +67,5 @@ public class Player : MonoBehaviour
     public void RightButton()
     {
         rightButton = !rightButton;
-    }
-
-    void DistortCamera()
-    {
-        mainCam.fieldOfView += shakeMoveSpeed;
-        mainCam.fieldOfView = mainCam.fieldOfView > maxCamDistance ? maxCamDistance : mainCam.fieldOfView;
-        mainCam.fieldOfView = mainCam.fieldOfView < minCamDistance ? minCamDistance : mainCam.fieldOfView;
     }
 }
