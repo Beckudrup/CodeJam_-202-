@@ -501,10 +501,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cdf9251ce002848ac4a93dfc5d65c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 100
   moovementSpeed: {fileID: 0}
-  LeftButton: {fileID: 0}
-  RightButton: {fileID: 0}
+  LeftHorn: {fileID: 0}
+  RightHorn: {fileID: 0}
+  leftButton: 0
+  rightButton: 0
+  shakeMoveSpeed: 0
 --- !u!1001 &488302938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1015,7 +1017,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1803497542}
-  - component: {fileID: 1803497543}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -1040,26 +1041,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1803497543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803497541}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dea3c7f4e07d2c045b665788798511a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultScenery: {fileID: 673908199420755022, guid: f572e64dcdf3ca64293a580e154e2ce3, type: 3}
-  spawnInterval: 22.5
-  upperSpawnTiming: 0.5
-  lowerSpawnTiming: 0
-  spawnPositionXUpper: 1382.9
-  spawnPositionXLower: 1000
-  spawnPositionY: -1400
-  spawnPositionZ: -374.2
 --- !u!1 &1964752651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1175,10 @@ MonoBehaviour:
   rightSpawnPositionXLower: 1662
   spawnPositionY: -1450
   spawnPositionZ: -590
-  defaultScenery: {fileID: 673908199420755022, guid: f572e64dcdf3ca64293a580e154e2ce3, type: 3}
+  sceneryObjects:
+  - {fileID: 673908199420755022, guid: f572e64dcdf3ca64293a580e154e2ce3, type: 3}
+  - {fileID: 673908199420755022, guid: f572e64dcdf3ca64293a580e154e2ce3, type: 3}
+  - {fileID: 673908199420755022, guid: f572e64dcdf3ca64293a580e154e2ce3, type: 3}
 --- !u!4 &2085217812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 673908199420755023, guid: f572e64dcdf3ca64293a580e154e2ce3, type: 3}
