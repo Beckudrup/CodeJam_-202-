@@ -1181,6 +1181,7 @@ MonoBehaviour:
   RightHorn: {fileID: 0}
   leftButton: 0
   rightButton: 0
+  shakeMoveSpeed: 0
 --- !u!224 &344624647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1525,6 +1526,7 @@ MonoBehaviour:
   RightHorn: {fileID: 0}
   leftButton: 0
   rightButton: 0
+  shakeMoveSpeed: 0
 --- !u!95 &455515402
 Animator:
   serializedVersion: 5
@@ -3834,6 +3836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 369389940}
   highscore: {fileID: 819109086}
+  playerScript: {fileID: 344624646}
 --- !u!4 &1458875240
 Transform:
   m_ObjectHideFlags: 0

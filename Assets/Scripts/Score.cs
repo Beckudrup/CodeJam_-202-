@@ -8,7 +8,7 @@ public class Score : MonoBehaviour
     // Inspired by: https://www.youtube.com/watch?v=vZU51tbgMXk
     public TextMeshProUGUI score;
     public TextMeshProUGUI highscore;
-    private Player playerScript;
+    public Player playerScript;
    
     private float distance = 0.5f;
     private float distanceTravelled;
