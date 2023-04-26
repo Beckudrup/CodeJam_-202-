@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
-    [SerializeField] Camera mainCam;
+    Camera mainCam;
     [SerializeField] GameObject startButton, hornButtons, endGameButtons, HUDText;
     [SerializeField] Animator cowCam;
     [SerializeField] int camStartSize = 0, camDefaultSize = 70, camEndGameSize = 25;
@@ -17,6 +17,7 @@ public class MenuScript : MonoBehaviour
     
     void Start()
     {
+        mainCam = Camera.main;
         HUDText.SetActive(false);
         endGameButtons.SetActive(false);
         hornButtons.SetActive(false);

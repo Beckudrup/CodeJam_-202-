@@ -8,23 +8,22 @@ public class Player : MonoBehaviour
 {
     Camera mainCam;
     int maxCamDistance = 150, minCamDistance = 70;
-    [SerializeField] float playerSpeed = 0;
     Transform cylinderTransform;
 
-    public TMP_Text moovementSpeed; //Cows speed 
-    [SerializeField] private GameObject LeftHorn, RightHorn;
-    public bool leftButton, rightButton;
+    [SerializeField] TMP_Text moovementSpeed; //Cows speed 
+    [SerializeField] GameObject LeftHorn, RightHorn;
+    [HideInInspector] public bool leftButton, rightButton;
 
     float baseMoveSpeed = 2f;
     float shakeMultiplier = 0.005f;
-    public float shakeMoveSpeed;
+    [HideInInspector] public float shakeMoveSpeed;
     float shakeThreshold = 2.0f;
 
 
     // Start is called before the first frame update
     void Awake()
     {
-        mainCam = GetComponent<Camera>();
+        mainCam = Camera.main;
         cylinderTransform = GameObject.Find("Cylinder").GetComponent<Transform>();
     }
 
@@ -56,11 +55,8 @@ public class Player : MonoBehaviour
             cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
             DistortCamera();
             var textToMoovementSpeed = shakeMoveSpeed * 10;
-            moovementSpeed.text = textToMoovementSpeed.ToString("0.00" + "km/t");
-
-
-            Debug.Log(playerSpeed);
-        }
+            moovementSpeed.text = textToMoovementSpeed.ToString("0.00") + " km/t";
+            }
     }
     public void LeftButton()
     {

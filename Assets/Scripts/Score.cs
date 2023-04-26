@@ -9,10 +9,10 @@ public class Score : MonoBehaviour
     public TextMeshProUGUI score;
     public TextMeshProUGUI highscore;
     public Player playerScript;
-   
-    private float distance = 0.5f;
-    private float scoreValue;
-    private int highscoreValue;
+
+    float distance = 0.5f;
+    float scoreValue;
+    int highscoreValue;
 
     void Start()
     {
@@ -33,7 +33,7 @@ public class Score : MonoBehaviour
     void UpdateHighScore()
     { // Måske skal distancetravelled være score.text
         if (scoreValue > PlayerPrefs.GetInt("HighScore", 0))
-        PlayerPrefs.SetFloat("HighScore", scoreValue);
+            PlayerPrefs.SetFloat("HighScore", scoreValue);
     }
 }
 

@@ -1181,8 +1181,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 390, y: -97.5}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 735, y: -97.5}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &369389940
 MonoBehaviour:
@@ -1465,9 +1465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 100
-  moovementSpeed: {fileID: 0}
-  LeftHorn: {fileID: 0}
-  RightHorn: {fileID: 0}
+  moovementSpeed: {fileID: 1377975628}
+  LeftHorn: {fileID: 787311120}
+  RightHorn: {fileID: 90259572}
   leftButton: 0
   rightButton: 0
   shakeMoveSpeed: 0
@@ -1733,8 +1733,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 390, y: -283.5}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 735, y: -283.5}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &819109086
 MonoBehaviour:
@@ -2322,7 +2322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea554eb9ae104ec40a88e5ddbe992c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCam: {fileID: 455515399}
   startButton: {fileID: 926746412}
   hornButtons: {fileID: 247581737}
   endGameButtons: {fileID: 256987893}
