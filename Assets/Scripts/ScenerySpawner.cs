@@ -14,7 +14,7 @@ public class ScenerySpawner : MonoBehaviour
     [SerializeField] float spawnPositionY = -383f;
     [SerializeField] float spawnPositionZ = -514.3f;
 
-    [SerializeField] GameObject defaultScenery;
+    [SerializeField] GameObject[] sceneryObjects = new GameObject[3];
     GameObject cylinder;
 
     private void OnTriggerEnter(Collider other)
@@ -28,7 +28,8 @@ public class ScenerySpawner : MonoBehaviour
 
     void SpawnScenery()
     {
-        GameObject newThing = Instantiate(defaultScenery, GetRandomPlacement(), Quaternion.identity);
+        int pickRandomObject = (int)Random.Range(0, 3);
+        GameObject newThing = Instantiate(sceneryObjects[pickRandomObject], GetRandomPlacement(), Quaternion.identity);
         newThing.transform.SetParent(cylinder.transform, true);
     }
 
@@ -52,7 +53,7 @@ public class ScenerySpawner : MonoBehaviour
     {
         cylinder = GameObject.Find("Cylinder");
 
-        GameObject newThing = Instantiate(defaultScenery, GetRandomPlacement(), Quaternion.identity);
+        GameObject newThing = Instantiate(sceneryObjects[0], GetRandomPlacement(), Quaternion.identity);
         newThing.transform.SetParent(cylinder.transform, true);
     }
 
