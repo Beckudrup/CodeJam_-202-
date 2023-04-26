@@ -36,6 +36,8 @@ public class Score : MonoBehaviour
         
         if (scoreValue > PlayerPrefs.GetInt("HighScore", 0) && timer.timeLeft<=0.2)
             PlayerPrefs.SetFloat("HighScore", scoreValue);
+        highscore.text = PlayerPrefs.GetInt("HighScore", 0).ToString("0");
+
     }
 }
 
