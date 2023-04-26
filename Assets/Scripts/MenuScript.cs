@@ -7,24 +7,24 @@ using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
-    Camera mainCam;
+    
+    [SerializeField] Camera mainCam;
     [SerializeField] GameObject startButton, hornButtons, endGameButtons, HUDText;
     [SerializeField] Animator cowCamAnimator;
     [SerializeField] int camStartSize = 0, camDefaultSize = 70, camEndGameSize = 25;
     
     bool startButtonPressed;
     bool gameFinished;
-    
-    void Start()
+
+    void Awake()
     {
-        mainCam = Camera.main;
+        mainCam.fieldOfView = camStartSize;
         HUDText.SetActive(false);
         endGameButtons.SetActive(false);
         hornButtons.SetActive(false);
-        mainCam.fieldOfView = camStartSize;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (mainCam.fieldOfView > camDefaultSize - 1 && gameFinished == false)
         {

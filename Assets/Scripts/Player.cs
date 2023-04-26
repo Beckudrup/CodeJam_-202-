@@ -8,7 +8,7 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     Camera mainCam;
-    int maxCamFOV = 150, minCamFOV = 70;
+    int maxCamFOV = 130, minCamFOV = 70;
     Transform cylinderTransform;
     Animator cowCamAnimator;
     [SerializeField] TMP_Text moovementSpeed; //Cows speed 
@@ -18,8 +18,9 @@ public class Player : MonoBehaviour
     float baseMoveSpeed = 2f;
     float shakeMultiplier = 0.005f;
     [HideInInspector] public float shakeMoveSpeed;
-    float shakeThreshold = 2.0f;
+    float shakeThreshold = 2f;
     float shake;
+    float moovementSpeedValue;
 
 
     // Start is called before the first frame update
@@ -41,37 +42,6 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Movement();
-
-        if (leftButton && rightButton)
-            {
-            /*
-            playerSpeed = Input.acceleration.y*50;
-            if (playerSpeed <= 0)
-                playerSpeed *= -1;
-            /*moovementSpeed.text = Input.accelerationEventCount.ToString("0.00");
-            moovementSpeed.text = playerSpeed.ToString("0.00"); //Kommenteret ud for nu da det kun virker p� mobil
-            cylinderTransform.Rotate(0, playerSpeed * Time.deltaTime, 0);
-            */
-            shake = Input.acceleration.magnitude;
-            cowCamAnimator.SetTrigger("isRiding"); 
-            cowCamAnimator.cullingMode = AnimatorCullingMode.CullUpdateTransforms;
-            if (shake > shakeThreshold) { 
-                shakeMoveSpeed += shake * shakeMultiplier;
-                DistortCamera();
-            }
-            else
-            {
-                shakeMoveSpeed -= shake * (shakeMultiplier+shakeMultiplier);
-                UnDistortCamera();
-                //Godt til threshholds (minder om et if statement) (ser om shakeMoveSpeed er mindre end 0 og s�tter derefter det til 0)
-                shakeMoveSpeed = shakeMoveSpeed < 0 ? 0 : shakeMoveSpeed;
-            }
-
-            cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
-            
-            var textToMoovementSpeed = shakeMoveSpeed * 10;
-            moovementSpeed.text = textToMoovementSpeed.ToString("0.00") + " km/t";
-            }
     }
     public void LeftButton()
     {
@@ -81,54 +51,55 @@ public class Player : MonoBehaviour
     {
         rightButton = !rightButton;
     }
-    
-    void DistortCamera()
-    {
-        mainCam.fieldOfView += shakeMoveSpeed/5;
-        mainCam.fieldOfView = mainCam.fieldOfView > maxCamFOV ? maxCamFOV : mainCam.fieldOfView;
-        //mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, maxCamFOV, shakeMoveSpeed * Time.deltaTime);
-    }
-
-    void UnDistortCamera()
-    {
-        mainCam.fieldOfView -= shakeMoveSpeed / 10;
-        mainCam.fieldOfView = mainCam.fieldOfView < minCamFOV ? minCamFOV : mainCam.fieldOfView;
-        //mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, minCamFOV, shakeMoveSpeed * Time.deltaTime);
-    }
 
     void Movement()
     {
         if (leftButton && rightButton)
         {
+            cowCamAnimator.cullingMode = AnimatorCullingMode.CullUpdateTransforms;
             var shake = Input.acceleration.magnitude;
             cowCamAnimator.SetTrigger("isRiding");
             if (shake > shakeThreshold)
             {
                 shakeMoveSpeed += shake * shakeMultiplier;
                 cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
-
+                DistortCamera();
             }
             else
             {
-                slowDown();
+                SlowDown();
                 cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
-
+                UnDistortCamera();
             }
         }
         else
         {
-            slowDown();
+            SlowDown();
             cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
-
+            UnDistortCamera();
         }
 
-        var textToMoovementSpeed = shakeMoveSpeed * 10;
-        moovementSpeed.text = textToMoovementSpeed.ToString("0.00") + " km/t";
+        moovementSpeedValue = shakeMoveSpeed * 10;
+        moovementSpeed.text = moovementSpeedValue.ToString("0.00") + " km/t";
     }
-    void slowDown()
+    void SlowDown()
     {
-        shakeMoveSpeed -= (shakeMultiplier + shakeMultiplier);
-        //Godt til threshholds (minder om et if statement) (ser om shakeMoveSpeed er mindre end 0 og s�tter derefter det til 0)
+        shakeMoveSpeed -= shakeMultiplier + shakeMultiplier;
+        //Godt til threshholds (minder om et if statement) (ser om shakeMoveSpeed er mindre end 0 og sætter derefter det til 0)
         shakeMoveSpeed = shakeMoveSpeed < 0 ? 0 : shakeMoveSpeed;
+    }
+    
+    void DistortCamera()
+    {
+        mainCam.fieldOfView = minCamFOV + moovementSpeedValue/3; //Magic number is a stabilizer to make the fov to increase faster
+        mainCam.fieldOfView = mainCam.fieldOfView > maxCamFOV ? maxCamFOV : mainCam.fieldOfView;
+        //mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, maxCamFOV, shakeMoveSpeed / 10);
+    }
+
+    void UnDistortCamera()
+    {
+        mainCam.fieldOfView = minCamFOV + moovementSpeedValue/3; //Magic number is a stabilizer to make the fov to decrease slower
+        mainCam.fieldOfView = mainCam.fieldOfView < minCamFOV ? minCamFOV : mainCam.fieldOfView;
+        //mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, minCamFOV, shakeMoveSpeed / 10);
     }
 }
