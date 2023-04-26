@@ -17,6 +17,8 @@ public class ScenerySpawner : MonoBehaviour
     [SerializeField] GameObject[] sceneryObjects = new GameObject[3];
     GameObject cylinder;
 
+    Quaternion SpawnRotation = Quaternion.Euler(180, 0, 0);
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Tree")
@@ -29,7 +31,7 @@ public class ScenerySpawner : MonoBehaviour
     void SpawnScenery()
     {
         int pickRandomObject = (int)Random.Range(0, 3);
-        GameObject newThing = Instantiate(sceneryObjects[pickRandomObject], GetRandomPlacement(), Quaternion.identity);
+        GameObject newThing = Instantiate(sceneryObjects[pickRandomObject], GetRandomPlacement(), SpawnRotation);
         newThing.transform.SetParent(cylinder.transform, true);
     }
 
@@ -53,7 +55,7 @@ public class ScenerySpawner : MonoBehaviour
     {
         cylinder = GameObject.Find("Cylinder");
 
-        GameObject newThing = Instantiate(sceneryObjects[0], GetRandomPlacement(), Quaternion.identity);
+        GameObject newThing = Instantiate(sceneryObjects[0], GetRandomPlacement(), SpawnRotation);
         newThing.transform.SetParent(cylinder.transform, true);
     }
 
