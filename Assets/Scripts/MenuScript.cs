@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
-    
+    public Score score;
     [SerializeField] Camera mainCam;
-    [SerializeField] GameObject startButton, hornButtons, endGameButtons, HUDText;
+    [SerializeField] GameObject startButton, hornButtons, HUDText, endScreen;
     [SerializeField] Animator cowCamAnimator;
     [SerializeField] int camStartSize = 0, camDefaultSize = 70, camEndGameSize = 25;
     
@@ -20,8 +20,8 @@ public class MenuScript : MonoBehaviour
     {
         mainCam.fieldOfView = camStartSize;
         HUDText.SetActive(false);
-        endGameButtons.SetActive(false);
         hornButtons.SetActive(false);
+        endScreen.SetActive(false);
     }
 
     void LateUpdate()
@@ -31,8 +31,6 @@ public class MenuScript : MonoBehaviour
             HUDText.SetActive(true);
             hornButtons.SetActive(true);
         }
-        if (mainCam.fieldOfView == camEndGameSize)
-            endGameButtons.SetActive(true);
     }
 
     public void StartGame()
@@ -42,11 +40,14 @@ public class MenuScript : MonoBehaviour
         startButton.SetActive(false);
     }
 
-    public void EndGame() //Only public to be access by test button 
+    public void EndGame() 
     {
         cowCamAnimator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
         gameFinished = true;
         hornButtons.SetActive(false);
+        HUDText.SetActive(false);
+        endScreen.SetActive(true);
+        score.SetScoreOnEndScreen();
         cowCamAnimator.SetTrigger("GameFinish");
     }
 
@@ -57,6 +58,11 @@ public class MenuScript : MonoBehaviour
 
     public void ViewHighscores()
     {
-        //new animation, maybe new scene as well.
+        //new milkshake animation.
+    }
+
+    public void DeleteHighscores()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
