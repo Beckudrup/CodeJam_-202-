@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     // Inspired by: https://www.youtube.com/watch?v=vZU51tbgMXk
-    [SerializeField] Image milkshake;
     public TextMeshProUGUI score;
     public TextMeshProUGUI highscore;
     public TextMeshProUGUI scoreEnd;
@@ -15,7 +14,7 @@ public class Score : MonoBehaviour
     public Player playerScript;
 
     float distance = 0.5f;
-    float scoreValue;
+    public float scoreValue;
     float highscoreValue;
     
     
@@ -34,7 +33,6 @@ public class Score : MonoBehaviour
         score.text = $"Score: {scoreValue:n0} m";
         UpdateHighScore();
         SetScoreOnEndScreen();
-        MilkshakeScore();
     }
 
     public void SetScoreOnEndScreen()
@@ -51,12 +49,6 @@ public class Score : MonoBehaviour
         {
             PlayerPrefs.SetFloat("HighScore", scoreValue);
         }
-    }
-
-    void MilkshakeScore()
-    {
-        var milkshakeFillLerp = Mathf.Lerp(0,scoreValue / 100,Time.deltaTime * .2f);
-        milkshake.fillAmount = milkshakeFillLerp;
     }
 }
 
