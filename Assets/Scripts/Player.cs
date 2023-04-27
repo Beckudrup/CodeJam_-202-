@@ -39,7 +39,8 @@ public class Player : MonoBehaviour
 
     void LateUpdate()
     {
-        if (shake > shakeThreshold) { 
+        if (shake > shakeThreshold) 
+        { 
             mainCam.fieldOfView += shakeMoveSpeed * Time.deltaTime;
         }
     }

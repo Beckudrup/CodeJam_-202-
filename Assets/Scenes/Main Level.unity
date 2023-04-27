@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.75
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1426706, g: 0.44430774, b: 0.5799327, a: 0.75}
+  m_IndirectSpecularColor: {r: 0.14273414, g: 0.4446293, b: 0.5790278, a: 0.75}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3756,7 +3756,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84c7b55a32802e442b195fe04d6029a0, type: 2}
+  - {fileID: 2100000, guid: c010e68e74f18564f9c0b4bf760e0618, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4457,7 +4457,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84c7b55a32802e442b195fe04d6029a0, type: 2}
+  - {fileID: 2100000, guid: c010e68e74f18564f9c0b4bf760e0618, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6026,7 +6026,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84c7b55a32802e442b195fe04d6029a0, type: 2}
+  - {fileID: 2100000, guid: c010e68e74f18564f9c0b4bf760e0618, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6349,7 +6349,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84c7b55a32802e442b195fe04d6029a0, type: 2}
+  - {fileID: 2100000, guid: c010e68e74f18564f9c0b4bf760e0618, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6612,7 +6612,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 32f7f2532b0d74d4394e50af27b14b91, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: be50b48baacd4ec4c8115b4b61f04349, type: 2}
+      objectReference: {fileID: 2100000, guid: 76660ec928da68f4c87c1cfc5fc1cfc5, type: 2}
     - target: {fileID: 919132149155446097, guid: 32f7f2532b0d74d4394e50af27b14b91, type: 3}
       propertyPath: m_Name
       value: Chicken
@@ -6725,7 +6725,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 31365a8118525f64c8f27f37e238fede, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e69446e4f837a1d46bae854ea64c8f4c, type: 2}
+      objectReference: {fileID: 2100000, guid: 4650dd3558a300349b7f17483b70a265, type: 2}
     - target: {fileID: 919132149155446097, guid: 31365a8118525f64c8f27f37e238fede, type: 3}
       propertyPath: m_Name
       value: yver
@@ -7081,7 +7081,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e4a88add2304ccb40a17add5f25d3c77, type: 2}
+  - {fileID: 2100000, guid: fdcf19ecf7bfd3547bb0c68d9d734609, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
