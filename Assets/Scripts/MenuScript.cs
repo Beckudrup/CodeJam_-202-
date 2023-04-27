@@ -52,7 +52,8 @@ public class MenuScript : MonoBehaviour
         score.SetScoreOnEndScreen();
         cowCamAnimator.SetTrigger("GameFinish");
         var delay = 0.1f;
-        Invoke(nameof(MilkshakeFill), delay);
+        MilkshakeFill();
+        //Invoke(nameof(MilkshakeFill), delay);
     }
 
     public void ResetGame()
