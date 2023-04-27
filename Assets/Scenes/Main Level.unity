@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.75
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14401284, g: 0.44601178, b: 0.5805707, a: 0.75}
+  m_IndirectSpecularColor: {r: 0.14273414, g: 0.4446293, b: 0.5790278, a: 0.75}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1335,7 +1335,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371275134}
   m_CullTransparentMesh: 1
->>>>>>> fbbe5c13b88bf4086abd75cf9357e3441ac34874
 --- !u!1 &418972298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,8 +1432,6 @@ Transform:
   m_Children:
   - {fileID: 1616865016}
   - {fileID: 81395531}
-  - {fileID: 1163316855}
-  - {fileID: 1725615441}
   - {fileID: 294374647}
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -1641,7 +1638,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732245894}
   m_CullTransparentMesh: 1
->>>>>>> fbbe5c13b88bf4086abd75cf9357e3441ac34874
 --- !u!1 &787311120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3153,11 +3149,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7133924593173f7409b46f2964551f2b, type: 3}
---- !u!4 &1163316855 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5238400757975563791, guid: 27cc82f3dc458f842a66ac79e6c621fe, type: 3}
-  m_PrefabInstance: {fileID: 395840525}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1163685308
 GameObject:
   m_ObjectHideFlags: 0
@@ -3685,8 +3676,10 @@ MonoBehaviour:
   treeRightSpawnPositionXLower: 1910
   treeSpawnPositionY: -1189
   treeSpawnPositionZ: -772
-  stoneLeftSpawnPositionX: 1420
-  stoneRightSpawnPositionX: 1671.3
+  stoneLeftSpawnPositionXUpper: 0
+  stoneLeftSpawnPositionXLower: 0
+  stoneRightSpawnPositionXUpper: 0
+  stoneRightSpawnPositionXLower: 0
   stoneSpawnPositionY: -1361.5
   stoneSpawnPositionZ: -454
   maxSceneryCount: 30
@@ -4051,6 +4044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca30aba88eea1fc439e7cddbd238eeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  milkshake: {fileID: 732245896}
   score: {fileID: 369389940}
   highscore: {fileID: 819109086}
   scoreEnd: {fileID: 1513534020}
@@ -4567,11 +4561,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616865015}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1725615441 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5238400757975563791, guid: 27cc82f3dc458f842a66ac79e6c621fe, type: 3}
-  m_PrefabInstance: {fileID: 702478348}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1746175650
 GameObject:
   m_ObjectHideFlags: 0
