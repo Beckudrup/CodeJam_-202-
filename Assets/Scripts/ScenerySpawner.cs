@@ -13,8 +13,11 @@ public class ScenerySpawner : MonoBehaviour
     [SerializeField] float treeSpawnPositionZ = -514.3f;
 
 
-    [SerializeField] float stoneLeftSpawnPositionX;
-    [SerializeField] float stoneRightSpawnPositionX;
+    [SerializeField] float stoneLeftSpawnPositionXUpper;
+    [SerializeField] float stoneLeftSpawnPositionXLower;
+    [SerializeField] float stoneRightSpawnPositionXUpper;
+    [SerializeField] float stoneRightSpawnPositionXLower;
+
     [SerializeField] float stoneSpawnPositionY;
     [SerializeField] float stoneSpawnPositionZ;
 
@@ -74,12 +77,12 @@ public class ScenerySpawner : MonoBehaviour
         {
             if (leftOrRight == 0)
             {
-                Vector3 spawnLocation = new Vector3(stoneLeftSpawnPositionX, stoneSpawnPositionY, stoneSpawnPositionZ);
+                Vector3 spawnLocation = new Vector3(Random.Range(stoneLeftSpawnPositionXLower, stoneLeftSpawnPositionXUpper), stoneSpawnPositionY, stoneSpawnPositionZ);
                 return spawnLocation;
             }
             else
             {
-                Vector3 spawnLocation = new Vector3(stoneRightSpawnPositionX, stoneSpawnPositionY, stoneSpawnPositionZ);
+                Vector3 spawnLocation = new Vector3(Random.Range(stoneRightSpawnPositionXLower, stoneRightSpawnPositionXUpper), stoneSpawnPositionY, stoneSpawnPositionZ);
                 return spawnLocation;
             }
         }
