@@ -51,6 +51,6 @@ https://github.com/Beckudrup/Moo-gaming/blob/main/Assets/Scripts/MenuScript.cs
 #### Class Diagram:  
 
 #### Use Case Diagram:  
-
+https://github.com/Beckudrup/Moo-gaming/blob/main/Assets/Diagrams/Use%20Case%20Diagram.png
 #### Sequence Diagram:  
 https://github.com/Beckudrup/Moo-gaming/blob/main/Assets/Diagrams/Sequence%20diagram.png
