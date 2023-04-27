@@ -1,4 +1,4 @@
-# Moo gaming
+# Moo gaming MED 2 GROUP 202
  CodeJam p2 moo
 
 
