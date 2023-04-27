@@ -41,14 +41,12 @@ public class SoundManager : MonoBehaviour
         if (milkshake.isPlaying) return;    
         milkshake.PlayOneShot(milkshake.clip);
     }
+    public void MilkshakeSoundStop() => milkshake.Stop();
 
     public void RunningSound()
     {
         if (running.isPlaying) return;
         running.PlayOneShot(running.clip);
     }
-
     public void RunningSoundStop() => running.Stop();
-
-
 }

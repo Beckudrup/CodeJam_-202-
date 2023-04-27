@@ -148,7 +148,7 @@ public class Player : MonoBehaviour
         var milkshakeStart = 0f;
         var scoreToMilkshake = 1000f;
         var milkshakeTarget = score.scoreValue / scoreToMilkshake;
-        var duration = 3f;
+        var duration = 2f;
         time += Time.deltaTime;
         milkshakeGameObject.SetActive(true);
         milkshake.fillAmount = Mathf.Lerp(milkshakeStart, milkshakeTarget, time / duration);
@@ -164,6 +164,7 @@ public class Player : MonoBehaviour
     void MilkshakeHasBeenFilled()
     {
         fillMilkshake = false;
+        SoundManager.Instance.MilkshakeSoundStop();
     }
     
 }
