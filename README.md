@@ -1,5 +1,4 @@
-# Moo gaming MED 2 GROUP 202
- CodeJam p2 moo
+# CODE JAM MED 2 GROUP 202
 
 
 ### Participating students and their suggestions/improvements (or additions) for june exam:
