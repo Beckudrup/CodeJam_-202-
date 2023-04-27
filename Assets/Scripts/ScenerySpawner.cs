@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScenerySpawner : MonoBehaviour
@@ -34,7 +32,15 @@ public class ScenerySpawner : MonoBehaviour
     Quaternion TreeSpawnRotation = Quaternion.Euler(180, 0, 0);
     Quaternion StoneSpawnRotation = Quaternion.Euler(172, 0, 0);
 
-    private void OnTriggerEnter(Collider other)
+    void Start()
+    {
+        cylinder = GameObject.Find("Cylinder");
+
+        GameObject newThing = Instantiate(sceneryObjects[0], GetRandomPosition(0), GetRotation(0));
+        newThing.transform.SetParent(cylinder.transform, true);
+    }
+    
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Tree" || other.gameObject.tag == "Stone")
         {
@@ -95,20 +101,8 @@ public class ScenerySpawner : MonoBehaviour
         {
             return TreeSpawnRotation;
         }
-        else
-        {
-            return StoneSpawnRotation;
-        }
+        return StoneSpawnRotation;
     }
-
-    private void Start()
-    {
-        cylinder = GameObject.Find("Cylinder");
-
-        GameObject newThing = Instantiate(sceneryObjects[0], GetRandomPosition(0), GetRotation(0));
-        newThing.transform.SetParent(cylinder.transform, true);
-    }
-
 }
 
 

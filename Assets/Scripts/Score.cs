@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
@@ -16,7 +13,8 @@ public class Score : MonoBehaviour
     float distance = 0.5f;
     public float scoreValue;
     float highscoreValue;
-    
+
+    bool highscoreDeleted;
     
 
     void Start()
@@ -24,7 +22,6 @@ public class Score : MonoBehaviour
         highscoreValue = PlayerPrefs.GetFloat("HighScore",0);
         highscore.text = $"Highscore: {highscoreValue:n0} m";
         score.text = $"Score: {scoreValue:n0} m";
-
     }
 
     void Update()
@@ -44,11 +41,18 @@ public class Score : MonoBehaviour
     void UpdateHighScore()
     {
         highscoreValue = PlayerPrefs.GetFloat("HighScore",0);
+        if (highscoreDeleted) return;
         highscore.text = $"Highscore: {highscoreValue:n0} m";
         if (highscoreValue < scoreValue)
         {
             PlayerPrefs.SetFloat("HighScore", scoreValue);
         }
+    }
+    
+    public void DeleteHighscore()
+    {
+        highscoreDeleted = true;
+        PlayerPrefs.DeleteAll();
     }
 }
 

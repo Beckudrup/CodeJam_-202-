@@ -1,39 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 public class Timer : MonoBehaviour
 {
     public TMP_Text timer;
     public float timeLeft = 10.0f;
-    [SerializeField] GameObject LeftHorn, RightHorn;
-    [HideInInspector] public bool leftButton, rightButton;
+    [SerializeField] GameObject leftButton, rightButton;
+    [HideInInspector] public bool leftButtonPressed, rightButtonPressed;
+
+    bool gameStarted;
     // Update is called once per frame
     public void FixedUpdate()
     {
-        if(leftButton && rightButton)
+        if (leftButtonPressed && rightButtonPressed)
         {
-            if (timeLeft <= 0)
-            {
-                timeLeft = 0;
-                //Spil animation og stop lvl
-                leftButton = false;
-                rightButton = false;
-            }
-            else
-            {
-                timer.text = timeLeft.ToString("0.0"); //Kommenteret ud for nu da det kun virker p� mobil
-                timeLeft -= Time.deltaTime;
-            }
+            gameStarted = true;
+        }
+
+        if (gameStarted)
+        {
+            timer.text = timeLeft.ToString("0.0"); //Kommenteret ud for nu da det kun virker p� mobil
+            timeLeft -= Time.deltaTime;
+        }
+
+        if (timeLeft <= 0)
+        {
+            timeLeft = 0;
+            timer.text = "Time is up!";
+            leftButtonPressed = false;
+            rightButtonPressed = false;
+            leftButton.SetActive(false);
+            rightButton.SetActive(false);
         }
     }
     public void LeftButton()
     {
-        leftButton = true;
+        leftButtonPressed = !leftButtonPressed;
     }
     public void RightButton()
     {
-        rightButton = true;
+        rightButtonPressed = !rightButtonPressed;
     }
 
 }

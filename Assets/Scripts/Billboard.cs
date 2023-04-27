@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Inspiration from: https://gamedevbeginner.com/billboards-in-unity-and-how-to-make-your-own/
