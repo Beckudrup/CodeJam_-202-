@@ -56,11 +56,6 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void ViewHighscores()
-    {
-        //new milkshake animation.
-    }
-
     public void DeleteHighscores()
     {
         PlayerPrefs.DeleteAll();
