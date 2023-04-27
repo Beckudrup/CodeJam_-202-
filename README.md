@@ -36,7 +36,8 @@ https://github.com/Beckudrup/Moo-gaming/blob/main/Assets/Scripts/Score.cs
 
 The script that holds the singleton pattern is our SoundManager.cs script. 
 https://github.com/Beckudrup/Moo-gaming/blob/main/Assets/Scripts/SoundManager.cs
-The SoundManager script also holds the different sounds that the SOundPlayer.cs script playes 
+
+The SoundManager script also holds the different sounds that the SoundPlayer.cs script playes 
 https://github.com/Beckudrup/Moo-gaming/blob/main/Assets/Scripts/SoundPlayer.cs
 
 
