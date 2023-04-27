@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 public class Timer : MonoBehaviour
 {
+    public MenuScript menuScript;
     public TMP_Text timer;
     public float timeLeft = 10.0f;
     [SerializeField] GameObject LeftHorn, RightHorn;
@@ -19,6 +20,7 @@ public class Timer : MonoBehaviour
                 //Spil animation og stop lvl
                 leftButton = false;
                 rightButton = false;
+                menuScript.EndGame();
             }
             else
             {

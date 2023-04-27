@@ -15,6 +15,8 @@ public class Score : MonoBehaviour
     float distance = 0.5f;
     float scoreValue;
     float highscoreValue;
+    
+    
 
     void Start()
     {
