@@ -26,9 +26,11 @@ All scripts are in the "scripts" folder under the "assets" folder
 
 
 The script that makes the world move around with the accelerometer is the Player.cs script
+
 https://github.com/Beckudrup/Moo-gaming/blob/main/Assets/Scripts/Player.cs
 
 The script that handles the background scenery and spawns new objects into the scenery is the ScenerySpawner.cs script
+
 https://github.com/Beckudrup/Moo-gaming/blob/main/Assets/Scripts/ScenerySpawner.cs
 
 The script that checks, displayes and saves the users score is the Score.cs script
