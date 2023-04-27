@@ -8,36 +8,44 @@ public class Score : MonoBehaviour
     // Inspired by: https://www.youtube.com/watch?v=vZU51tbgMXk
     public TextMeshProUGUI score;
     public TextMeshProUGUI highscore;
+    public TextMeshProUGUI scoreEnd;
+    public TextMeshProUGUI highscoreEnd;
     public Player playerScript;
-    public Timer timer;
 
     float distance = 0.5f;
     float scoreValue;
-    int highscoreValue;
+    float highscoreValue;
 
     void Start()
     {
-        highscoreValue = PlayerPrefs.GetInt("HighScore",0);
-        highscore.text = "Highscore: " + PlayerPrefs.GetInt("HighScore", 0);
-        score.text = "Score: " + scoreValue + " m";
+        highscoreValue = PlayerPrefs.GetFloat("HighScore",0);
+        highscore.text = $"Highscore: {highscoreValue:n0} m";
+        score.text = $"Score: {scoreValue:n0} m";
 
     }
 
     void Update()
     {
         scoreValue += distance * playerScript.shakeMoveSpeed;
-        score.text = "Score: " + scoreValue.ToString("0") + " m";
+        score.text = $"Score: {scoreValue:n0} m";
+        UpdateHighScore();
+        SetScoreOnEndScreen();
+    }
 
-        highscore.text = highscoreValue < scoreValue ? "Highscore: "+scoreValue.ToString("0") + " m": highscore.text;
+    public void SetScoreOnEndScreen()
+    {
+        scoreEnd.text = $"Score: \n{scoreValue:n0} m";
+        highscoreEnd.text = $"Highscore: \n{highscoreValue:n0} m";
     }
 
     void UpdateHighScore()
-    { // Måske skal distancetravelled være score.text
-        
-        if (scoreValue > PlayerPrefs.GetInt("HighScore", 0) && timer.timeLeft<=0.2)
+    {
+        highscoreValue = PlayerPrefs.GetFloat("HighScore",0);
+        highscore.text = $"Highscore: {highscoreValue:n0} m";
+        if (highscoreValue < scoreValue)
+        {
             PlayerPrefs.SetFloat("HighScore", scoreValue);
-        highscore.text = PlayerPrefs.GetInt("HighScore", 0).ToString("0");
-
+        }
     }
 }
 

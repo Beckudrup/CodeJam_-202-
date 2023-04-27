@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
-    
+    public Score score;
     [SerializeField] Camera mainCam;
-    [SerializeField] GameObject startButton, hornButtons, endGameButtons, HUDText;
+    [SerializeField] GameObject startButton, hornButtons, endGameButtons, HUDText, endScreen, deleteHighscores, highscoreView;
     [SerializeField] Animator cowCamAnimator;
     [SerializeField] int camStartSize = 0, camDefaultSize = 70, camEndGameSize = 25;
     
@@ -22,6 +22,10 @@ public class MenuScript : MonoBehaviour
         HUDText.SetActive(false);
         endGameButtons.SetActive(false);
         hornButtons.SetActive(false);
+        endScreen.SetActive(false);
+        deleteHighscores.SetActive(false);
+        highscoreView.SetActive(false);
+
     }
 
     void LateUpdate()
@@ -47,6 +51,9 @@ public class MenuScript : MonoBehaviour
         cowCamAnimator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
         gameFinished = true;
         hornButtons.SetActive(false);
+        HUDText.SetActive(false);
+        endScreen.SetActive(true);
+        score.SetScoreOnEndScreen();
         cowCamAnimator.SetTrigger("GameFinish");
     }
 
@@ -57,6 +64,13 @@ public class MenuScript : MonoBehaviour
 
     public void ViewHighscores()
     {
+        highscoreView.SetActive(true);
+        deleteHighscores.SetActive(true);
         //new animation, maybe new scene as well.
+    }
+
+    public void DeleteHighscores()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
