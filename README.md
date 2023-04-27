@@ -5,19 +5,18 @@
 ### Participating students and their suggestions/improvements (or additions) for june exam:
 
 
-Christoffer Beck Oudrup:
+#### Christoffer Beck Oudrup:  
+
+#### Emilie Høj Slente:
 
 
-Emilie Høj Slente:
+#### Jakob Winkel Missel:
 
 
-Jakob Winkel Missel:
+#### Leonard Kjærulff Bækgaard:
 
 
-Leonard Kjærulff Bækgaard:
-
-
-Nikolaj Bach Møller Jensen:
+#### Nikolaj Bach Møller Jensen:
 
 
 
