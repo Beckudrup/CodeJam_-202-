@@ -6,8 +6,8 @@ public class MenuScript : MonoBehaviour
     [SerializeField] Score score;
     [SerializeField] Camera mainCam;
     [SerializeField] GameObject startButton, hornButtons, HUDText, endScreen;
-    [SerializeField] Animator cowCamAnimator;
-    [SerializeField] int camStartSize = 0, camDefaultSize = 70, camEndGameSize = 25;
+    [SerializeField] Animator cowCamAnimator, grabTextAnimator;
+    [SerializeField] int camStartSize = 0, camDefaultSize = 70;
 
     bool startButtonPressed;
     bool gameFinished;
@@ -27,6 +27,7 @@ public class MenuScript : MonoBehaviour
         {
             HUDText.SetActive(true);
             hornButtons.SetActive(true);
+            grabTextAnimator.SetTrigger("StartGame");
         }
     }
 

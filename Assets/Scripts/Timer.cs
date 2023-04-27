@@ -1,19 +1,27 @@
+using System;
 using UnityEngine;
 using TMPro;
 public class Timer : MonoBehaviour
 {
     public TMP_Text timer;
     public float timeLeft = 10.0f;
-    [SerializeField] GameObject leftButton, rightButton;
+    [SerializeField] GameObject leftButton, rightButton, grabText;
     [HideInInspector] public bool leftButtonPressed, rightButtonPressed;
 
     bool gameStarted;
     // Update is called once per frame
+    void Awake()
+    {
+        timer.alpha = 0;
+    }
+
     public void FixedUpdate()
     {
         if (leftButtonPressed && rightButtonPressed)
         {
+            timer.alpha = 1;
             gameStarted = true;
+            grabText.SetActive(false);
         }
 
         if (gameStarted)
@@ -25,7 +33,7 @@ public class Timer : MonoBehaviour
         if (timeLeft <= 0)
         {
             timeLeft = 0;
-            timer.text = "Time is up!";
+            timer.text = "Time is up!\n\nStop shaking!";
             leftButtonPressed = false;
             rightButtonPressed = false;
             leftButton.SetActive(false);

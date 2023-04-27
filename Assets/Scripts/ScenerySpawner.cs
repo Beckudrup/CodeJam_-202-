@@ -23,10 +23,10 @@ public class ScenerySpawner : MonoBehaviour
     float spawnIntervalLower = 0f;
  
 
-    private int sceneryCount = 5;
+    int sceneryCount = 5;
     [SerializeField] int maxSceneryCount;
 
-    [SerializeField] GameObject[] sceneryObjects = new GameObject[3];
+    [SerializeField] GameObject[] sceneryObjects = new GameObject[4];
     GameObject cylinder;
 
     Quaternion TreeSpawnRotation = Quaternion.Euler(180, 0, 0);
@@ -42,7 +42,7 @@ public class ScenerySpawner : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Tree" || other.gameObject.tag == "Stone")
+        if (other.gameObject.tag == "Tree" || other.gameObject.tag == "Stone" || other.gameObject.tag == "Sunflower")
         {
             Destroy(other.gameObject);
             Invoke("SpawnScenery", Random.Range(spawnIntervalLower, spawnIntervalUpper));
@@ -57,7 +57,7 @@ public class ScenerySpawner : MonoBehaviour
 
     void SpawnScenery()
     {
-        int pickRandomObject = (int)Random.Range(0, 2);
+        int pickRandomObject = Random.Range(0, 3);
         GameObject newThing = Instantiate(sceneryObjects[pickRandomObject], GetRandomPosition(pickRandomObject), GetRotation(pickRandomObject));
         newThing.transform.SetParent(cylinder.transform, true);
     }
@@ -65,7 +65,7 @@ public class ScenerySpawner : MonoBehaviour
     Vector3 GetRandomPosition(int objectIndex)
     {
         
-        int leftOrRight = Random.Range(0, 2);
+        int leftOrRight = Random.Range(0, 3);
 
         if (objectIndex == 0)
         {
