@@ -43,7 +43,8 @@ public class ScenerySpawner : MonoBehaviour
             if (sceneryCount < maxSceneryCount)
             {
                 Invoke("SpawnScenery", Random.Range(spawnIntervalLower, spawnIntervalUpper));
-                sceneryCount += 1;
+                Invoke("SpawnScenery", Random.Range(spawnIntervalLower, spawnIntervalUpper));
+                sceneryCount += 2;
             }
         }
     }
