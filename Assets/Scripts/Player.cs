@@ -7,6 +7,8 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
+    public MenuScript menuScript;
+    public Timer timer;
     Camera mainCam;
     int maxCamFOV = 130, minCamFOV = 70;
     Transform cylinderTransform;
@@ -16,7 +18,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool leftButton, rightButton;
 
     float baseMoveSpeed = 2f;
-    float shakeMultiplier = 0.005f;
+    float shakeMultiplier = 0.002f;
     public float shakeMoveSpeed;
     float shakeThreshold = 2f;
     float shake;
@@ -54,10 +56,18 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
+        if (timer.timeLeft <= 0)
+        {
+            leftButton = false;
+            rightButton = false;
+            shake = 0;
+            if(shakeMoveSpeed == 0)
+                menuScript.EndGame();
+        }
         if (leftButton && rightButton)
         {
             cowCamAnimator.cullingMode = AnimatorCullingMode.CullUpdateTransforms;
-            var shake = Input.acceleration.magnitude;
+            shake = Input.acceleration.magnitude;
             cowCamAnimator.SetTrigger("isRiding");
             if (shake > shakeThreshold)
             {
@@ -79,13 +89,17 @@ public class Player : MonoBehaviour
             UnDistortCamera();
         }
 
-        moovementSpeedValue = shakeMoveSpeed * 10;
+        moovementSpeedValue = shakeMoveSpeed * 35;
         moovementSpeed.text = moovementSpeedValue.ToString("0.00") + " km/t";
     }
     void SlowDown()
     {
         shakeMoveSpeed -= shakeMultiplier + shakeMultiplier;
         //Godt til threshholds (minder om et if statement) (ser om shakeMoveSpeed er mindre end 0 og sætter derefter det til 0)
+        if (timer.timeLeft <= 0)
+        {
+            shakeMoveSpeed -= shakeMultiplier * 2;
+        }
         shakeMoveSpeed = shakeMoveSpeed < 0 ? 0 : shakeMoveSpeed;
     }
     
