@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     [HideInInspector] public bool leftButtonPressed, rightButtonPressed;
 
     bool gameStarted;
+    bool timeStop;
     // Update is called once per frame
     void Awake()
     {
@@ -17,6 +18,7 @@ public class Timer : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if (timeStop) return;
         if (leftButtonPressed && rightButtonPressed)
         {
             timer.alpha = 1;
@@ -26,18 +28,21 @@ public class Timer : MonoBehaviour
 
         if (gameStarted)
         {
+            
             timer.text = timeLeft.ToString("0.0"); //Kommenteret ud for nu da det kun virker p� mobil
             timeLeft -= Time.deltaTime;
         }
 
         if (timeLeft <= 0)
         {
+            SoundManager.Instance.CowbellSound();
             timeLeft = 0;
             timer.text = "Time is up!\n\nStop shaking!";
             leftButtonPressed = false;
             rightButtonPressed = false;
             leftButton.SetActive(false);
             rightButton.SetActive(false);
+            timeStop = true;
         }
     }
     public void LeftButton()
