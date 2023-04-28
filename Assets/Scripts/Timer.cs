@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using TMPro;
 public class Timer : MonoBehaviour
@@ -13,7 +12,8 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Awake()
     {
-        timer.alpha = 0;
+        var alphaValue = 0;
+        timer.alpha = alphaValue;
     }
 
     public void FixedUpdate()
@@ -21,7 +21,8 @@ public class Timer : MonoBehaviour
         if (timeStop) return;
         if (leftButtonPressed && rightButtonPressed)
         {
-            timer.alpha = 1;
+            var alphaValue = 1;
+            timer.alpha = alphaValue;
             gameStarted = true;
             grabText.SetActive(false);
         }

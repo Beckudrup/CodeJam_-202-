@@ -13,8 +13,7 @@ public class ChickenBehavior : MonoBehaviour
             transform.SetParent(null);
             hitByCow = true;
             Invoke("RemoveAfterHit", chickenLifeTime);
-        }  
-        
+        }
     }
 
     void Update()
@@ -29,7 +28,4 @@ public class ChickenBehavior : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-
-
-
 }

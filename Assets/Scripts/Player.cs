@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-
 public class Player : MonoBehaviour
 {
     [SerializeField] Image milkshake;
@@ -61,7 +60,6 @@ public class Player : MonoBehaviour
     {
         rightButton = !rightButton;
         rightHornButtonGraphic.SetActive(!rightButton);
-
     }
 
     void Movement()

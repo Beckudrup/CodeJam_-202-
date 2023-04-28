@@ -9,8 +9,7 @@ public class ScenerySpawner : MonoBehaviour
     [SerializeField] float treeRightSpawnPositionXLower = 1340f;
     [SerializeField] float treeSpawnPositionY = -383f;
     [SerializeField] float treeSpawnPositionZ = -514.3f;
-
-
+    
     [SerializeField] float stoneLeftSpawnPositionXUpper;
     [SerializeField] float stoneLeftSpawnPositionXLower;
     [SerializeField] float stoneRightSpawnPositionXUpper;
