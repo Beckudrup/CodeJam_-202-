@@ -15,8 +15,13 @@ public class Player : MonoBehaviour
     Transform cylinderTransform;
     Animator cowCamAnimator;
     [SerializeField] TMP_Text moovementSpeed; //Cows speed 
+    [SerializeField] public HornButtons hornButtons;
+
+    /*
     [SerializeField] GameObject rightHornButtonGraphic, leftHornButtonGraphic;
     [HideInInspector] public bool leftButton, rightButton;
+    */
+
 
     float shakeMultiplier = 0.002f;
     public float shakeMoveSpeed;
@@ -52,21 +57,11 @@ public class Player : MonoBehaviour
         Movement();
         MilkshakeFill();
     }
-    public void LeftButton()
-    {
-        leftButton = !leftButton;
-        leftHornButtonGraphic.SetActive(!leftButton);
-    }
-    public void RightButton()
-    {
-        rightButton = !rightButton;
-        rightHornButtonGraphic.SetActive(!rightButton);
 
-    }
 
     void Movement()
     {
-        if (leftButton && rightButton)
+        if (hornButtons.leftHornButton && hornButtons.rightHornButton)
         {
             PlayGunShot();
             
@@ -99,13 +94,15 @@ public class Player : MonoBehaviour
 
     void TimeIsUp()
     {
-        if (timer.timeLeft <= 0)
+        if (Timer.Instance.timeLeft <= 0)
         {
-            leftButton = false;
-            rightButton = false;
+            
+            hornButtons.rightHornButton = false;
+            hornButtons.leftHornButton = false;
             shake = 0;
             if(shakeMoveSpeed == 0)
                 menuScript.EndGame();
+            
         }
     }
     void PlayGunShot()
@@ -120,8 +117,7 @@ public class Player : MonoBehaviour
     void SlowDown()
     {
         shakeMoveSpeed -= shakeMultiplier + shakeMultiplier;
-        //Godt til threshholds (minder om et if statement) (ser om shakeMoveSpeed er mindre end 0 og sætter derefter det til 0)
-        if (timer.timeLeft <= 0)
+        if (Timer.Instance.timeLeft <= 0)
         {
             var slowAmount = 2;
             shakeMoveSpeed -= shakeMultiplier * slowAmount;

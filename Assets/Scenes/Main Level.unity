@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.75
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14273414, g: 0.4446293, b: 0.5790278, a: 0.75}
+  m_IndirectSpecularColor: {r: 0.1426706, g: 0.44430774, b: 0.5799327, a: 0.75}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -234,8 +234,8 @@ MonoBehaviour:
   leftButton: {fileID: 787311120}
   rightButton: {fileID: 90259572}
   grabText: {fileID: 802478607}
-  leftButtonPressed: 0
-  rightButtonPressed: 0
+  hornButtons: {fileID: 518013109}
+  menu: {fileID: 959970817}
 --- !u!4 &18811143
 Transform:
   m_ObjectHideFlags: 0
@@ -531,20 +531,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 18811142}
-          m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-          m_MethodName: RightButton
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 455515401}
-          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        - m_Target: {fileID: 518013109}
+          m_TargetAssemblyTypeName: HornButtons, Assembly-CSharp
           m_MethodName: RightButton
           m_Mode: 1
           m_Arguments:
@@ -559,20 +547,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 18811142}
-          m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-          m_MethodName: RightButton
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 455515401}
-          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        - m_Target: {fileID: 518013109}
+          m_TargetAssemblyTypeName: HornButtons, Assembly-CSharp
           m_MethodName: RightButton
           m_Mode: 1
           m_Arguments:
@@ -1802,10 +1778,7 @@ MonoBehaviour:
   menuScript: {fileID: 959970817}
   timer: {fileID: 18811142}
   moovementSpeed: {fileID: 1377975628}
-  rightHornButtonGraphic: {fileID: 1450940934}
-  leftHornButtonGraphic: {fileID: 813294165}
-  leftButton: 0
-  rightButton: 0
+  hornButtons: {fileID: 518013109}
   shakeMoveSpeed: 0
 --- !u!95 &455515402
 Animator:
@@ -2236,6 +2209,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513119114}
   m_CullTransparentMesh: 1
+--- !u!1 &518013108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 518013110}
+  - component: {fileID: 518013109}
+  m_Layer: 0
+  m_Name: HornButtonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &518013109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518013108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666a24efb7f88ae4db052f43350b1bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftButton: {fileID: 787311120}
+  rightButton: {fileID: 90259572}
+  buttonsPressed: 0
+  leftHornButton: 0
+  rightHornButton: 0
+  rightHornButtonGraphic: {fileID: 1450940934}
+  leftHornButtonGraphic: {fileID: 813294165}
+--- !u!4 &518013110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518013108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 515.8117, y: 214.73459, z: -150.86737}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &578657191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2557,20 +2581,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 18811142}
-          m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-          m_MethodName: LeftButton
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 455515401}
-          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        - m_Target: {fileID: 518013109}
+          m_TargetAssemblyTypeName: HornButtons, Assembly-CSharp
           m_MethodName: LeftButton
           m_Mode: 1
           m_Arguments:
@@ -2585,20 +2597,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 18811142}
-          m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-          m_MethodName: LeftButton
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 455515401}
-          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        - m_Target: {fileID: 518013109}
+          m_TargetAssemblyTypeName: HornButtons, Assembly-CSharp
           m_MethodName: LeftButton
           m_Mode: 1
           m_Arguments:
@@ -3554,6 +3554,8 @@ MonoBehaviour:
   grabTextAnimator: {fileID: 802478611}
   camStartSize: 0
   camDefaultSize: 70
+  gameStarted: 0
+  timeStop: 0
 --- !u!4 &959970818
 Transform:
   m_ObjectHideFlags: 0
@@ -3967,6 +3969,18 @@ MonoBehaviour:
       - m_Target: {fileID: 959970817}
         m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
         m_MethodName: ResetGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 18811142}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: restartTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

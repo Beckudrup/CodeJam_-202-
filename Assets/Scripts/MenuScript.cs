@@ -8,10 +8,11 @@ public class MenuScript : MonoBehaviour
     [SerializeField] GameObject startButton, hornButtons, HUDText, endScreen;
     [SerializeField] Animator cowCamAnimator, grabTextAnimator;
     [SerializeField] int camStartSize = 0, camDefaultSize = 70;
-
+    private int startScreen = 0;
     bool startButtonPressed;
     bool gameFinished;
-
+    public bool gameStarted;
+    public bool timeStop;
     void Awake()
     {
         mainCam.fieldOfView = camStartSize;
@@ -37,6 +38,8 @@ public class MenuScript : MonoBehaviour
         cowCamAnimator.SetTrigger("StartGame");
         startButton.SetActive(false);
         SoundManager.Instance.BGMSound();
+        //Timer.Instance.gameStarted = false;
+
     }
 
     public void EndGame()
@@ -55,6 +58,10 @@ public class MenuScript : MonoBehaviour
 
     public void ResetGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(startScreen);
+        Timer.Instance.timeLeft = 10.0f;
+        //Timer.Instance.timeStop = false;
+        gameFinished = false;
+
     }
 }
