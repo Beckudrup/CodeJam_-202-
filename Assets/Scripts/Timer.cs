@@ -3,14 +3,15 @@ using UnityEngine;
 using TMPro;
 public class Timer : MonoBehaviour
 {
+    [SerializeField] public HornButtons hornButtons;
+
     public TMP_Text timer;
     public float timeLeft = 10.0f;
     [SerializeField] GameObject leftButton, rightButton, grabText;
-    [SerializeField] public HornButtons hornButtons;
-    [SerializeField] public MenuScript menu;
 
-    //    public bool gameStarted;
-    //    public bool timeStop;
+
+    public bool gameStarted;
+    public bool timeStop;
 
     public static Timer Instance;
 
@@ -33,17 +34,17 @@ public class Timer : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (menu.timeStop) return;
+        if (timeStop) return;
         if (hornButtons.leftHornButton && hornButtons.rightHornButton)
         {
             grabText.SetActive(false);
 
             timer.alpha = 1;
-            menu.gameStarted = true;
+            gameStarted = true;
 
         }
 
-        if (menu.gameStarted)
+        if (gameStarted)
         {
             
             timer.text = timeLeft.ToString("0.0"); 
@@ -59,7 +60,7 @@ public class Timer : MonoBehaviour
             hornButtons.rightHornButton = false;
             leftButton.SetActive(false);
             rightButton.SetActive(false);
-            menu.timeStop = true;
+            timeStop = true;
         }
     }
     /*

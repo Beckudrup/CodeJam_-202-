@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] public HornButtons hornButtons;
+
     [SerializeField] Image milkshake;
     [SerializeField] GameObject milkshakeGameObject;
     [SerializeField] Score score;
@@ -15,7 +17,6 @@ public class Player : MonoBehaviour
     Transform cylinderTransform;
     Animator cowCamAnimator;
     [SerializeField] TMP_Text moovementSpeed; //Cows speed 
-    [SerializeField] public HornButtons hornButtons;
 
     /*
     [SerializeField] GameObject rightHornButtonGraphic, leftHornButtonGraphic;

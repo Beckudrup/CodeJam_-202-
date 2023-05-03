@@ -11,8 +11,7 @@ public class MenuScript : MonoBehaviour
     private int startScreen = 0;
     bool startButtonPressed;
     bool gameFinished;
-    public bool gameStarted;
-    public bool timeStop;
+
     void Awake()
     {
         mainCam.fieldOfView = camStartSize;
@@ -59,9 +58,7 @@ public class MenuScript : MonoBehaviour
     public void ResetGame()
     {
         SceneManager.LoadScene(startScreen);
-        Timer.Instance.timeLeft = 10.0f;
-        //Timer.Instance.timeStop = false;
-        gameFinished = false;
+
 
     }
 }
