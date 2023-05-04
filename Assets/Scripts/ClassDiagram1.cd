@@ -60,11 +60,15 @@
     <Position X="10.25" Y="1.25" Width="1.5" />
     <TypeIdentifier />
   </Class>
-  <Class Name="HornButtons" Collapsed="true">
+  <Class Name="HornButtons">
     <Position X="3.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChickenBehavior">
+    <Position X="17.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgACoAAAAiAAAAAAAAAAAAAAAAAABAAAAAAAEABA=</HashCode>
-      <FileName>Assets\Scripts\HornButtons.cs</FileName>
+      <HashCode>CAQAAAAAAAAABAAAAAAAAAAAAAAAAAAAQEAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ChickenBehavior.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
