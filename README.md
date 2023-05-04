@@ -48,8 +48,8 @@ https://github.com/Beckudrup/Moo-gaming/blob/main/Assets/Scripts/MenuScript.cs
 ### Diagrams:
 
 #### Class Diagram:  
-
+https://github.com/Beckudrup/CodeJam_-202-/blob/main/Assets/Diagrams/CodejamClassDiagram.png
 #### Use Case Diagram:  
-https://github.com/Beckudrup/Moo-gaming/blob/main/Assets/Diagrams/Use%20Case%20Diagram.png
+https://github.com/Beckudrup/CodeJam_-202-/blob/Christoffer-Beck-Oudrup/Assets/Diagrams/UseCase%20.drawio.png
 #### Sequence Diagram:  
-https://github.com/Beckudrup/Moo-gaming/blob/main/Assets/Diagrams/Sequence%20diagram.png
+https://github.com/Beckudrup/CodeJam_-202-/blob/Christoffer-Beck-Oudrup/Assets/Diagrams/Sequence_diagram.png
