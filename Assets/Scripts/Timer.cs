@@ -7,9 +7,7 @@ public class Timer : MonoBehaviour
     [SerializeField] GameObject leftButton, rightButton, grabText;
     [HideInInspector] public bool leftButtonPressed, rightButtonPressed;
 
-    bool gameStarted;
-    bool timeStop;
-    // Update is called once per frame
+    bool gameStarted, timeStop, gunshotPlayed;
     void Awake()
     {
         var alphaValue = 0;
@@ -29,15 +27,21 @@ public class Timer : MonoBehaviour
 
         if (gameStarted)
         {
-            
-            timer.text = timeLeft.ToString("0.0"); //Kommenteret ud for nu da det kun virker p� mobil
+            if (!gunshotPlayed)
+            {
+                SoundManager.Instance.GunshotSound();
+                gunshotPlayed = true;
+            }
+            timer.text = timeLeft.ToString("0.0");
             timeLeft -= Time.deltaTime;
         }
 
         if (timeLeft <= 0)
         {
+            GameEvents.OnTimeIsUp();
             SoundManager.Instance.CowbellSound();
             timeLeft = 0;
+            timer.fontSize = 38;
             timer.text = "Time is up!\n\nStop shaking!";
             leftButtonPressed = false;
             rightButtonPressed = false;

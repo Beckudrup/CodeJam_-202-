@@ -10,8 +10,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource bgm, moo, gunshot, running, cowbell, chicken, milkshake;
     public static SoundManager Instance;
 
-    
-
     void Awake()
     {
         if (Instance == null)
