@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (leftButtonPressed && rightButtonPressed)
+        if (leftButtonPressed)
         {
             timer.alpha = 1;
             gameStarted = true;

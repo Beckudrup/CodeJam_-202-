@@ -13,17 +13,27 @@ public class DayCycle : MonoBehaviour
     
     private Light lt;
 
+    [SerializeField] Timer timerScript;
+
+    private float timeThreshold = 10f;
+
     void Start()
     {
         lt = GetComponent<Light>(); // Getting the component
     }
 
-    public void Update()
-    { 
+    void ColorChange()
+    {
         Color.RGBToHSV(new Color(redValue,greenValue,blueValue,alphaValue),
             out float hueColor, out float saturationColor, out float valueColor);
       
         valueColor = Mathf.PingPong(Time.time, duration) / duration;
         lt.color = Color.Lerp(color0, color1, valueColor);
+    }
+    
+    public void Update()
+    { 
+        if(timerScript.timeLeft < timeThreshold)
+            ColorChange();
     }
 }
