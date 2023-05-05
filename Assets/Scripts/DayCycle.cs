@@ -4,19 +4,32 @@ using UnityEngine;
 
 public class DayCycle : MonoBehaviour
 {
-    // https://docs.unity3d.com/ScriptReference/Color.HSVToRGB.html
-    // https://docs.unity3d.com/ScriptReference/Light-color.html
+    // Inspiration from Unity Documentation: https://docs.unity3d.com/ScriptReference/Color.HSVToRGB.html
+    // Inspiration from Unity Documentation: https://docs.unity3d.com/ScriptReference/Light-color.html
+
+    [SerializeField] private float duration;
+    
+    private Color color0 = Color.red;
+    private Color color1 = Color.yellow;
+    
+    private Color color3 = Col
     
     private Light lt;
-    private float m_Value;
 
     void Start()
     {
-        lt = GetComponent<Light>();
+        lt = GetComponent<Light>(); // Getting the component
     }
-    
-    void Update()
+
+    private void Update()
     {
-        lt.color -= (Color.white / 2.0f) * Time.deltaTime;
+        float t = Mathf.PingPong(Time.time, duration) / duration;
+        lt.color = Color.Lerp(color0, color1, t);
     }
+
+    // public void ChangeColor()
+    // {
+    //     float t = Mathf.PingPong(Time.time, duration) / duration;
+    //     lt.color = Color.Lerp(color0, color1, t);
+    // }
 }

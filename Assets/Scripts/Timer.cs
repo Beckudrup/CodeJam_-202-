@@ -8,6 +8,8 @@ public class Timer : MonoBehaviour
     [SerializeField] GameObject leftButton, rightButton, grabText;
     [HideInInspector] public bool leftButtonPressed, rightButtonPressed;
 
+    // public DayCycle dayCycleScript;
+
     bool gameStarted;
     // Update is called once per frame
     void Awake()
@@ -17,7 +19,7 @@ public class Timer : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (leftButtonPressed && rightButtonPressed)
+        if (leftButtonPressed)
         {
             timer.alpha = 1;
             gameStarted = true;
@@ -28,6 +30,7 @@ public class Timer : MonoBehaviour
         {
             timer.text = timeLeft.ToString("0.0"); //Kommenteret ud for nu da det kun virker p� mobil
             timeLeft -= Time.deltaTime;
+            // dayCycleScript.ChangeColor();
         }
 
         if (timeLeft <= 0)
