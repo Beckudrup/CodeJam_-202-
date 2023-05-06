@@ -44,7 +44,7 @@ public class SoundManager : MonoBehaviour
     public void RunningSound()
     {
         if (running.isPlaying) return;
-        running.PlayOneShot(running.clip);
+        running.Play();
     }
     public void RunningSoundStop() => running.Stop();
 }

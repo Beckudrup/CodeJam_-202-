@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,7 +15,11 @@ public class MenuScript : MonoBehaviour
     float milkshakeFillTime;
     bool fillMilkshake, milkshakeFilled, startButtonPressed, gameFinished;
 
-    Color[] milkshakeFlavors = {new(.5f, .3f, .2f), new(.9f, .4f, .1f)}; 
+    Color[] milkshakeFlavors = { new(.9f, .8f, .7f), new(.8f, .4f, .6f), new(.5f, .3f, .2f) };
+    [SerializeField] Image[] milkshakeGlasses;
+    [SerializeField] List<Image> milkshakeGlassesList;
+    Image previousMilkshake;
+
     void Awake()
     {
         mainCam.fieldOfView = camStartSize;
@@ -35,7 +40,7 @@ public class MenuScript : MonoBehaviour
         GameEvents.GameEnded -= GameEnded;
         GameEvents.FinishGameAnimPlayed -= FillMilkshake;
     }
-    
+
     void LateUpdate()
     {
         var threshold = 1;
@@ -76,33 +81,55 @@ public class MenuScript : MonoBehaviour
     {
         fillMilkshake = true;
     }
+
     void MilkshakeFill()
     {
         if (milkshakeFilled || !fillMilkshake) return;
         var milkshakeFillStart = 0f;
         var scoreToMilkshake = 1000f;
         var milkshakeFillTarget = Score.Instance.scoreValue / scoreToMilkshake;
+        //var milkshakeCount = Mathf.FloorToInt(milkshakeFillTarget);
         var duration = milkshakeFillTarget * 2;
+        var oneMilkshake = 1;
+        var fillAmount = Mathf.Lerp(milkshakeFillStart, milkshakeFillTarget, milkshakeFillTime / duration);
         milkshakeFillTime += Time.deltaTime;
         scoreUI.SetActive(true);
-        milkshake.fillAmount = Mathf.Lerp(milkshakeFillStart, milkshakeFillTarget, milkshakeFillTime / duration);
-        var oneMilkshake = 1;
-        if (milkshake.fillAmount >= oneMilkshake)
+        var filledMilkshakes = milkshakeFillTarget;
+        
+        if (filledMilkshakes < milkshakeGlassesList.Count)
         {
-            milkshakeFillTarget--;
-            milkshake.fillAmount = Mathf.Lerp(milkshakeFillStart, milkshakeFillTarget, milkshakeFillTime / duration);
-            milkshake.color = milkshakeFlavors[0];
-            if (milkshake.fillAmount >= oneMilkshake)
+            for (int i = 0; i < filledMilkshakes; i++)
             {
-                milkshakeFillTarget--;
-                milkshake.fillAmount = Mathf.Lerp(milkshakeFillStart, milkshakeFillTarget, milkshakeFillTime / duration);
-                milkshake.color = milkshakeFlavors[1];
+                previousMilkshake = milkshakeGlasses[i];
+
+                milkshake.color = milkshakeFlavors[i];
+                previousMilkshake.fillAmount = fillAmount;
+                if (previousMilkshake.fillAmount != oneMilkshake) return;
+                milkshakeGlassesList.Add(milkshakeGlasses[i]);
             }
         }
+
+        // milkshake.fillAmount = fillAmount;
+        // milkshake.color = milkshakeFlavors[0];
+        //
+        // if (milkshake.fillAmount >= oneMilkshake)
+        // {
+        //     duration++;
+        //     milkshake.fillAmount = fillAmount;
+        //     milkshake.color = milkshakeFlavors[1];
+        //     if (milkshake.fillAmount >= oneMilkshake)
+        //     {
+        //         duration++;
+        //         milkshake.fillAmount = fillAmount;
+        //         milkshake.color = milkshakeFlavors[2];
+        //     }
+        // }
         SoundManager.Instance.MilkshakeSound();
         Invoke(nameof(MilkshakeHasBeenFilled), duration);
     }
-    void MilkshakeHasBeenFilled()
+
+
+void MilkshakeHasBeenFilled()
     {
         endScreen.SetActive(true);
         SoundManager.Instance.MilkshakeSoundStop();

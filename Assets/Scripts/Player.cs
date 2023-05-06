@@ -1,9 +1,10 @@
 using UnityEngine;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] GameObject milkshakeGameObject;
+    //[SerializeField] GameObject milkshakeGameObject;
     [SerializeField] TMP_Text moovementSpeed; 
     [SerializeField] GameObject rightHornButtonGraphic, leftHornButtonGraphic;
     [SerializeField] Transform cylinderTransform;
@@ -21,7 +22,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        milkshakeGameObject.SetActive(false);
+        //milkshakeGameObject.SetActive(false);
         mainCam = Camera.main;
         cowCamAnimator = GetComponent<Animator>();
     }
@@ -60,8 +61,13 @@ public class Player : MonoBehaviour
         var normalizeValue = 35;
         moovementSpeedValue = shakeMoveSpeed * normalizeValue;
         moovementSpeed.text = moovementSpeedValue.ToString("0.00") + " km/ph";
-        if(shakeMoveSpeed < 0)
-            cowCamAnimator.SetTrigger("isRiding");
+        if (shakeMoveSpeed > 0)
+        {
+            cowCamAnimator.Play("RidingCow");
+            SoundManager.Instance.RunningSound();
+        }
+        else
+            SoundManager.Instance.RunningSoundStop();
         if (timeIsUp) return;
         if (leftButton && rightButton)
         {
@@ -71,8 +77,7 @@ public class Player : MonoBehaviour
             {
                 shakeMoveSpeed += shakeAcceleration * shakeMultiplier;
                 cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
-                DistortCamera();
-                SoundManager.Instance.RunningSound();
+                IncreaseFoV();
             }
             else
                 SlowDown();
@@ -94,21 +99,19 @@ public class Player : MonoBehaviour
     void SlowDown()
     {
         if (shakeMoveSpeed == 0) return;
-        UnDistortCamera();
+        DecreaseFoV();
         shakeMoveSpeed -= shakeMultiplier + shakeMultiplier;
         cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
-        shakeMoveSpeed = shakeMoveSpeed < 0 ? 0 : shakeMoveSpeed;
-        if (shakeMoveSpeed == 0)
-            SoundManager.Instance.RunningSoundStop();
+        shakeMoveSpeed = shakeMoveSpeed <= 0 ? 0 : shakeMoveSpeed;
     }
     
-    void DistortCamera()
+    void IncreaseFoV()
     {
         mainCam.fieldOfView = minCamFOV + moovementSpeedValue/fovStabilizer;
         mainCam.fieldOfView = mainCam.fieldOfView > maxCamFOV ? maxCamFOV : mainCam.fieldOfView;
     }
 
-    void UnDistortCamera()
+    void DecreaseFoV()
     {
         mainCam.fieldOfView = minCamFOV + moovementSpeedValue/fovStabilizer;
         mainCam.fieldOfView = mainCam.fieldOfView < minCamFOV ? minCamFOV : mainCam.fieldOfView;
