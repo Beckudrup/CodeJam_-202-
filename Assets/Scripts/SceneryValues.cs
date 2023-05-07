@@ -26,7 +26,7 @@ public class SceneryValues : ScriptableObject
     }
 
     public virtual Quaternion GetRotation()                                                                            // converts the rotation value to Quaternions and returns it. 
-                                                                                                                       // the method is marked with the virtual keyword to allow it to be overwritten. 
+                                                                                                                       // the method is marked with the virtual keyword to allow it to be overidden. 
     {
         Quaternion objectRotation = Quaternion.Euler(_spawnRotation);
         return objectRotation;
