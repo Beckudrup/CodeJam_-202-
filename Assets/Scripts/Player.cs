@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     float shakeMultiplier = 0.002f;
     public float shakeMoveSpeed;
-    float shakeThreshold = 2f;
+    float shakeThreshold = 1.15f;
     float shake;
     float moovementSpeedValue;
 
