@@ -64,7 +64,7 @@ public class ScenerySpawner : MonoBehaviour
     Vector3 GetRandomPosition(int objectIndex)
     {
         
-        int leftOrRight = Random.Range(0, 3);
+        int leftOrRight = Random.Range(0, 2);
 
         if (objectIndex == 0)
         {

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c445f3d25e014e5428a5b6936c4c9710, type: 3}
+  m_Name: TotalNormalHouse
+  m_EditorClassIdentifier: 
+  spawnPosXLeftSideUpper: 1200
+  spawnPosXLeftSideLower: 700
+  spawnPosXRightSideUpper: 2500
+  spawnPosXRightSideLower: 1870
+  spawnPosY: -1233
+  spawnPosZ: -589
+  spawnRotationX: 180
+  spawnRorationY: 0
+  spawnRorationZ: 0
+  _spawnRotation: {x: 180, y: 0, z: 0}
+  randomYRotationLower: 0
+  randomYRotationUpper: 360

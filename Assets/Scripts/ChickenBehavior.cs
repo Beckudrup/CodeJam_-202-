@@ -4,6 +4,7 @@ public class ChickenBehavior : MonoBehaviour
 {
     bool hitByCow;
     float chickenLifeTime = 8f;
+    [SerializeField] Vector3 chickenTrajectory = new Vector3(0, 200, 1000);
 
     void OnTriggerEnter(Collider other)
     {
@@ -20,12 +21,13 @@ public class ChickenBehavior : MonoBehaviour
     {
         if (hitByCow)
         {
-            transform.position += new Vector3(0,200,1000) * Time.deltaTime;
+            transform.position += chickenTrajectory * Time.deltaTime;
         }
     }
 
     void RemoveAfterHit()
     {
         Destroy(this.gameObject);
+
     }
 }

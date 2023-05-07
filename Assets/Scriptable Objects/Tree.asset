@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5727cc232acf0dd4fa378a2ba3f7536a, type: 3}
+  m_Name: Tree
+  m_EditorClassIdentifier: 
+  spawnPosXLeftSideUpper: 1508
+  spawnPosXLeftSideLower: 600
+  spawnPosXRightSideUpper: 2800
+  spawnPosXRightSideLower: 1910
+  spawnPosY: -533
+  spawnPosZ: 252.3
+  spawnRotationX: 90
+  spawnRorationY: 0
+  spawnRorationZ: 0
+  _spawnRotation: {x: 90, y: 0, z: 0}

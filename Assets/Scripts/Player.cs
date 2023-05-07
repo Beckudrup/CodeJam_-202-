@@ -21,7 +21,17 @@ public class Player : MonoBehaviour
     public float shakeMoveSpeed;
     float shakeThreshold = 2f;
     float shake;
-    float moovementSpeedValue;
+
+    float _moovementSpeedValue;
+
+    //public float moovementSpeedValue
+    //{
+    //    get
+    //    {
+    //        return _moovementSpeedValue;
+    //    }
+    //}
+    
 
     float time;
     bool gunShot;
@@ -88,8 +98,8 @@ public class Player : MonoBehaviour
             SlowDown();
         }
         var normalizeValue = 35;
-        moovementSpeedValue = shakeMoveSpeed * normalizeValue;
-        moovementSpeed.text = moovementSpeedValue.ToString("0.00") + " km/t";
+        _moovementSpeedValue = shakeMoveSpeed * normalizeValue;
+        moovementSpeed.text = _moovementSpeedValue.ToString("0.00") + " km/t";
         
         if(shakeMoveSpeed == 0)
             SoundManager.Instance.RunningSoundStop();
@@ -131,13 +141,13 @@ public class Player : MonoBehaviour
     
     void DistortCamera()
     {
-        mainCam.fieldOfView = minCamFOV + moovementSpeedValue/3; //Magic number is a stabilizer to make the fov to increase faster
+        mainCam.fieldOfView = minCamFOV + _moovementSpeedValue/3; //Magic number is a stabilizer to make the fov to increase faster
         mainCam.fieldOfView = mainCam.fieldOfView > maxCamFOV ? maxCamFOV : mainCam.fieldOfView;
     }
 
     void UnDistortCamera()
     {
-        mainCam.fieldOfView = minCamFOV + moovementSpeedValue/3; //Magic number is a stabilizer to make the fov to decrease slower
+        mainCam.fieldOfView = minCamFOV + _moovementSpeedValue/3; //Magic number is a stabilizer to make the fov to decrease slower
         mainCam.fieldOfView = mainCam.fieldOfView < minCamFOV ? minCamFOV : mainCam.fieldOfView;
     }
     
