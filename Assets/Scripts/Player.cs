@@ -86,19 +86,19 @@ public class Player : MonoBehaviour
                 cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
                 DistortCamera();
                 SoundManager.Instance.RunningSound();
-                // the COW gameobject is holding the world jump animator controller
-                WorldJump.SetBool("IsJumping", false);
+                CowIsNOTJumping();
             }
             else
             {
-                
-                
+                CowIsJumping();
+
                 SlowDown();
             }
         }
         else
         {
             SlowDown();
+            CowIsNOTJumping();
         }
         var normalizeValue = 35;
         moovementSpeedValue = shakeMoveSpeed * normalizeValue;
@@ -110,14 +110,21 @@ public class Player : MonoBehaviour
 
     void CowIsJumping()
     {
+        // the COW gameobject is holding the WorldJump animator controller
         WorldJump.cullingMode = AnimatorCullingMode.CullUpdateTransforms;
         WorldJump.SetBool("IsJumping", true);
-        if (WorldJump.GetBool("Isjumping") == true)
-        {
+        //if (WorldJump.GetBool("Isjumping") == true)
+        //{
             // CountdownEvent.;
-        }
+       // }
     }
 
+    void CowIsNOTJumping()
+    {
+        // the COW gameobject is holding the WorldJump animator controller
+        WorldJump.cullingMode = AnimatorCullingMode.CullUpdateTransforms;
+        WorldJump.SetBool("IsJumping", false);
+    }
 
     void TimeIsUp()
     {
