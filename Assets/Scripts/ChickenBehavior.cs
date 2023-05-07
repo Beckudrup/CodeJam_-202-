@@ -10,28 +10,29 @@ public class ChickenBehavior : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             SoundManager.Instance.ChickenSound();
-            // the chicken is carried behind the player aka cow, as a
-            // child object of the cow,therefor the transform.SetParent(Null)
-            // removes it from the hierachy, (so the chicken can go flying.) 
+            
             transform.SetParent(null);
             hitByCow = true;
             Invoke("RemoveAfterHit", chickenLifeTime);
         }
     }
 
+    float ChickenflyX = 0f;
+    float ChickenflyY = 200f;
+    float ChickenflyZ = 1000f;
+
     void Update()
     {
         if (hitByCow)
         {
-            transform.position += new Vector3(0,200,1000) * Time.deltaTime;
+            transform.position += new Vector3(ChickenflyX, ChickenflyY, ChickenflyZ) * Time.deltaTime;
         }
     }
-
-
-    // the method for destroying Chicken object after getting 
+    // the method for destroying Chicken object after hitting the collider
     void RemoveAfterHit()
     {
         Destroy(this.gameObject);
+
     }
 }
 
