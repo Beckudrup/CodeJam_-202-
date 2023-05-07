@@ -4,6 +4,8 @@ public class ChickenBehavior : MonoBehaviour
 {
     bool hitByCow;
     float chickenLifeTime = 8f;
+    int chickenNewYPos = 200;
+    int chickenNewZPos = 1000;
 
     void OnTriggerEnter(Collider other)
     {
@@ -20,12 +22,12 @@ public class ChickenBehavior : MonoBehaviour
     {
         if (hitByCow)
         {
-            transform.position += new Vector3(0,200,1000) * Time.deltaTime;
+            transform.position += new Vector3(0,chickenNewYPos,chickenNewZPos) * Time.deltaTime;
         }
     }
 
     void RemoveAfterHit()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

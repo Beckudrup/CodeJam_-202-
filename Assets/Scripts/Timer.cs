@@ -16,6 +16,13 @@ public class Timer : MonoBehaviour
 
     public void FixedUpdate()
     {
+        StartTime();
+        GameIsStated();
+        TimeIsUp();
+    }
+
+    void StartTime()
+    {
         if (timeStop) return;
         if (leftButtonPressed && rightButtonPressed)
         {
@@ -24,7 +31,10 @@ public class Timer : MonoBehaviour
             gameStarted = true;
             grabText.SetActive(false);
         }
+    }
 
+    void GameIsStated()
+    {
         if (gameStarted)
         {
             if (!gunshotPlayed)
@@ -35,14 +45,18 @@ public class Timer : MonoBehaviour
             timer.text = timeLeft.ToString("0.0");
             timeLeft -= Time.deltaTime;
         }
-
-        if (timeLeft <= 0)
+    }
+    
+    void TimeIsUp()
+    {
+        if (timeLeft <= 0 && !timeStop)
         {
             GameEvents.OnTimeIsUp();
             SoundManager.Instance.CowbellSound();
             timeLeft = 0;
-            timer.fontSize = 38;
-            timer.text = "Time is up!\n\nStop shaking!";
+            var biggerFontSize = 38;
+            timer.fontSize = biggerFontSize;
+            timer.text = "Time is up!\n\n\nStop shaking!";
             leftButtonPressed = false;
             rightButtonPressed = false;
             leftButton.SetActive(false);
@@ -50,6 +64,7 @@ public class Timer : MonoBehaviour
             timeStop = true;
         }
     }
+
     public void LeftButton()
     {
         leftButtonPressed = !leftButtonPressed;

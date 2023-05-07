@@ -18,53 +18,50 @@ public class ScenerySpawner : MonoBehaviour
     [SerializeField] float stoneSpawnPositionY;
     [SerializeField] float stoneSpawnPositionZ;
 
-    float spawnIntervalUpper = 1f;
-    float spawnIntervalLower = 0f;
- 
-
+    readonly float spawnIntervalUpper, spawnIntervalLower = 0f;
+    
     int sceneryCount = 5;
     [SerializeField] int maxSceneryCount;
 
     [SerializeField] GameObject[] sceneryObjects = new GameObject[4];
     GameObject cylinder;
 
-    Quaternion TreeSpawnRotation = Quaternion.Euler(180, 0, 0);
-    Quaternion StoneSpawnRotation = Quaternion.Euler(172, 0, 0);
+    readonly Quaternion treeSpawnRotation = Quaternion.Euler(180, 0, 0); 
+    readonly Quaternion stoneSpawnRotation = Quaternion.Euler(172, 0, 0);
 
     void Start()
     {
         cylinder = GameObject.Find("Cylinder");
-
         GameObject newThing = Instantiate(sceneryObjects[0], GetRandomPosition(0), GetRotation(0));
         newThing.transform.SetParent(cylinder.transform, true);
     }
     
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Tree" || other.gameObject.tag == "Stone" || other.gameObject.tag == "Sunflower")
+        if (other.gameObject.CompareTag("Tree") || other.gameObject.CompareTag("Stone") || other.gameObject.CompareTag("Sunflower"))
         {
             Destroy(other.gameObject);
-            Invoke("SpawnScenery", Random.Range(spawnIntervalLower, spawnIntervalUpper));
+            Invoke(nameof(SpawnScenery), Random.Range(spawnIntervalLower, spawnIntervalUpper));
             if (sceneryCount < maxSceneryCount)
             {
-                Invoke("SpawnScenery", Random.Range(spawnIntervalLower, spawnIntervalUpper));
-                Invoke("SpawnScenery", Random.Range(spawnIntervalLower, spawnIntervalUpper));
-                sceneryCount += 2;
+                Invoke(nameof(SpawnScenery), Random.Range(spawnIntervalLower, spawnIntervalUpper));
+                Invoke(nameof(SpawnScenery), Random.Range(spawnIntervalLower, spawnIntervalUpper));
             }
         }
     }
 
     void SpawnScenery()
     {
-        int pickRandomObject = Random.Range(0, 3);
+        int pickRandomObject = Random.Range(0, sceneryObjects.Length);
         GameObject newThing = Instantiate(sceneryObjects[pickRandomObject], GetRandomPosition(pickRandomObject), GetRotation(pickRandomObject));
         newThing.transform.SetParent(cylinder.transform, true);
+        sceneryCount++;
     }
 
     Vector3 GetRandomPosition(int objectIndex)
     {
         
-        int leftOrRight = Random.Range(0, 3);
+        int leftOrRight = Random.Range(0, sceneryObjects.Length);
 
         if (objectIndex == 0)
         {
@@ -79,18 +76,15 @@ public class ScenerySpawner : MonoBehaviour
                 return spawnLocation;
             }
         }
+        if (leftOrRight == 0)
+        {
+            Vector3 spawnLocation = new Vector3(Random.Range(stoneLeftSpawnPositionXLower, stoneLeftSpawnPositionXUpper), stoneSpawnPositionY, stoneSpawnPositionZ);
+            return spawnLocation; 
+        }
         else
         {
-            if (leftOrRight == 0)
-            {
-                Vector3 spawnLocation = new Vector3(Random.Range(stoneLeftSpawnPositionXLower, stoneLeftSpawnPositionXUpper), stoneSpawnPositionY, stoneSpawnPositionZ);
-                return spawnLocation;
-            }
-            else
-            {
-                Vector3 spawnLocation = new Vector3(Random.Range(stoneRightSpawnPositionXLower, stoneRightSpawnPositionXUpper), stoneSpawnPositionY, stoneSpawnPositionZ);
-                return spawnLocation;
-            }
+            Vector3 spawnLocation = new Vector3(Random.Range(stoneRightSpawnPositionXLower, stoneRightSpawnPositionXUpper), stoneSpawnPositionY, stoneSpawnPositionZ);
+            return spawnLocation;
         }
     }
 
@@ -98,9 +92,9 @@ public class ScenerySpawner : MonoBehaviour
     {
         if (objectIndex == 0)
         {
-            return TreeSpawnRotation;
+            return treeSpawnRotation;
         }
-        return StoneSpawnRotation;
+        return stoneSpawnRotation;
     }
 }
 
