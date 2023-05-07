@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Threading;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     int maxCamFOV = 130, minCamFOV = 70;
     Transform cylinderTransform;
     Animator cowCamAnimator;
+    Animator WorldJump;
     [SerializeField] TMP_Text moovementSpeed; //Cows speed 
     [SerializeField] GameObject rightHornButtonGraphic, leftHornButtonGraphic;
     [HideInInspector] public bool leftButton, rightButton;
@@ -34,6 +36,12 @@ public class Player : MonoBehaviour
         mainCam = Camera.main;
         cowCamAnimator = GetComponent<Animator>();
         cylinderTransform = GameObject.Find("Cylinder").GetComponent<Transform>();
+
+        //https://answers.unity.com/questions/377819/getcomponent-for-siblings-and-parents.html Where I got inspirtion for getting parent animator from.
+
+        WorldJump = transform.parent.GetComponent<Animator>();
+
+       // WorldJump = GetComponent;
     }
 
     void LateUpdate()
@@ -71,15 +79,20 @@ public class Player : MonoBehaviour
             cowCamAnimator.cullingMode = AnimatorCullingMode.CullUpdateTransforms;
             shake = Input.acceleration.magnitude;
             cowCamAnimator.SetTrigger("isRiding");
+           
             if (shake > shakeThreshold)
             {
                 shakeMoveSpeed += shake * shakeMultiplier;
                 cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
                 DistortCamera();
                 SoundManager.Instance.RunningSound();
+                // the COW gameobject is holding the world jump animator controller
+                WorldJump.SetBool("IsJumping", false);
             }
             else
             {
+                
+                
                 SlowDown();
             }
         }
@@ -94,6 +107,17 @@ public class Player : MonoBehaviour
         if(shakeMoveSpeed == 0)
             SoundManager.Instance.RunningSoundStop();
     }
+
+    void CowIsJumping()
+    {
+        WorldJump.cullingMode = AnimatorCullingMode.CullUpdateTransforms;
+        WorldJump.SetBool("IsJumping", true);
+        if (WorldJump.GetBool("Isjumping") == true)
+        {
+            // CountdownEvent.;
+        }
+    }
+
 
     void TimeIsUp()
     {
