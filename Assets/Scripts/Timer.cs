@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
 
     void GameIsStated()
     {
-        if (gameStarted)
+        if (gameStarted && !timeStop)
         {
             if (!gunshotPlayed)
             {
@@ -51,9 +51,9 @@ public class Timer : MonoBehaviour
     {
         if (timeLeft <= 0 && !timeStop)
         {
+            timeLeft = 0;
             GameEvents.OnTimeIsUp();
             SoundManager.Instance.CowbellSound();
-            timeLeft = 0;
             var biggerFontSize = 38;
             timer.fontSize = biggerFontSize;
             timer.text = "Time is up!\n\n\nStop shaking!";

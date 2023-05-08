@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.75
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14399326, g: 0.44600424, b: 0.5829956, a: 0.75}
+  m_IndirectSpecularColor: {r: 0.14273414, g: 0.4446293, b: 0.5790278, a: 0.75}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1797,7 +1797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cdf9251ce002848ac4a93dfc5d65c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  milkshakeGameObject: {fileID: 0}
   moovementSpeed: {fileID: 1377975628}
   rightHornButtonGraphic: {fileID: 1450940934}
   leftHornButtonGraphic: {fileID: 813294165}
@@ -3451,8 +3450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000021457672, y: 0.000015258789}
-  m_SizeDelta: {x: 334, y: 441}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0.000015258789}
+  m_SizeDelta: {x: 334, y: 441.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &951333597
 Animator:
@@ -3552,11 +3551,6 @@ MonoBehaviour:
   grabTextAnimator: {fileID: 802478611}
   camStartSize: 0
   camDefaultSize: 70
-  milkshakeGlasses:
-  - {fileID: 951333598}
-  - {fileID: 951333598}
-  - {fileID: 951333598}
-  milkshakeGlassesList: []
 --- !u!4 &959970818
 Transform:
   m_ObjectHideFlags: 0
