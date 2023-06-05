@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using JetBrains.Annotations;
+
 public class Timer : MonoBehaviour
 {
     public TMP_Text timer;
@@ -21,6 +23,7 @@ public class Timer : MonoBehaviour
         if (timeStop) return;
         if (leftButtonPressed && rightButtonPressed)
         {
+            //alpha is the transparentsy of the timer goes from 0 to 1,
             var alphaValue = 1;
             timer.alpha = alphaValue;
             gameStarted = true;
@@ -34,6 +37,7 @@ public class Timer : MonoBehaviour
             timeLeft -= Time.deltaTime;
         }
 
+      
         if (timeLeft <= 0)
         {
             SoundManager.Instance.CowbellSound();

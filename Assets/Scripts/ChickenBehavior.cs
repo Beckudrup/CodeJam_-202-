@@ -14,8 +14,7 @@ public class ChickenBehavior : MonoBehaviour
             
             transform.SetParent(null);
             hitByCow = true;
-            Invoke("RemoveAfterHit", chickenLifeTime);
-            // added TimeIsUp() method for ending game early when hitting Chicken
+            Invoke("RemoveAfterHit", chickenLifeTime);  
            
         }
 
@@ -31,8 +30,10 @@ public class ChickenBehavior : MonoBehaviour
         if (hitByCow)
         {
             transform.position += new Vector3(ChickenflyX, ChickenflyY, ChickenflyZ) * Time.deltaTime;
+            
         }
     }
+
     // the method for destroying Chicken object after chickenLifeTime has ended (8f).
     void RemoveAfterHit()
     {

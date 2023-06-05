@@ -86,10 +86,12 @@ public class Player : MonoBehaviour
                 cylinderTransform.Rotate(0, shakeMoveSpeed, 0);
                 DistortCamera();
                 SoundManager.Instance.RunningSound();
+                // added CowIsNOTJumping, 
                 CowIsNOTJumping();
             }
             else
             {
+                // added CowIsJumping,
                 CowIsJumping();
 
                 SlowDown();
@@ -98,6 +100,7 @@ public class Player : MonoBehaviour
         else
         {
             SlowDown();
+           // added CowIsNOTJumping,
             CowIsNOTJumping();
         }
         var normalizeValue = 35;
@@ -113,10 +116,8 @@ public class Player : MonoBehaviour
         // the COW gameobject is holding the WorldJump animator controller
         WorldJump.cullingMode = AnimatorCullingMode.CullUpdateTransforms;
         WorldJump.SetBool("IsJumping", true);
-        //if (WorldJump.GetBool("Isjumping") == true)
-        //{
-            // CountdownEvent.;
-       // }
+        
+        
     }
 
     void CowIsNOTJumping()
@@ -126,8 +127,7 @@ public class Player : MonoBehaviour
         WorldJump.SetBool("IsJumping", false);
     }
 
-    // put TimeIsUp() as public, so the method can be called in ChickenBehavior for when Chicken is HitByCow()
-     public void  TimeIsUp()
+      void  TimeIsUp()
     {
         if (timer.timeLeft <= 0)
         {
@@ -173,7 +173,7 @@ public class Player : MonoBehaviour
         mainCam.fieldOfView = mainCam.fieldOfView < minCamFOV ? minCamFOV : mainCam.fieldOfView;
     }
     
-    void MilkshakeFill()
+     void MilkshakeFill()
     {
         if (!fillMilkshake) return;
         var milkshakeStart = 0f;
