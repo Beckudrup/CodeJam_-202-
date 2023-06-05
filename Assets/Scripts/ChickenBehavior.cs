@@ -6,6 +6,8 @@ public class ChickenBehavior : MonoBehaviour
     float chickenLifeTime = 8f;
     
 
+
+    //colides w. Chicken
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
