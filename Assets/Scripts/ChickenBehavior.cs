@@ -14,6 +14,7 @@ public class ChickenBehavior : MonoBehaviour
             transform.SetParent(null);
             hitByCow = true;
             Invoke("RemoveAfterHit", chickenLifeTime);
+            
         }
     }
 

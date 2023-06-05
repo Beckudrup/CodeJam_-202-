@@ -126,7 +126,8 @@ public class Player : MonoBehaviour
         WorldJump.SetBool("IsJumping", false);
     }
 
-    void TimeIsUp()
+    // put TimeIsUp() as public, so the method can be called in ChickenBehavior for when Chicken is HitByCow()
+     public void  TimeIsUp()
     {
         if (timer.timeLeft <= 0)
         {
