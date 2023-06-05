@@ -32,7 +32,7 @@ public class Score : MonoBehaviour
         SetScoreOnEndScreen();
     }
 
-    public void SetScoreOnEndScreen()
+    public void SetScoreOnEndScreen()  
     {
         scoreEnd.text = $"Score: \n{scoreValue:n0} m";
         highscoreEnd.text = $"Highscore: \n{highscoreValue:n0} m";

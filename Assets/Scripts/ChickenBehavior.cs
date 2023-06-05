@@ -18,6 +18,7 @@ public class ChickenBehavior : MonoBehaviour
         }
     }
 
+    // direction coords of flying chicken
     float ChickenflyX = 0f;
     float ChickenflyY = 200f;
     float ChickenflyZ = 1000f;
@@ -29,7 +30,7 @@ public class ChickenBehavior : MonoBehaviour
             transform.position += new Vector3(ChickenflyX, ChickenflyY, ChickenflyZ) * Time.deltaTime;
         }
     }
-    // the method for destroying Chicken object after hitting the collider
+    // the method for destroying Chicken object after chickenLifeTime has ended (8f).
     void RemoveAfterHit()
     {
         Destroy(this.gameObject);
