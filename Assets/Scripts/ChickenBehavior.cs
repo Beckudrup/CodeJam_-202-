@@ -4,6 +4,7 @@ public class ChickenBehavior : MonoBehaviour
 {
     bool hitByCow;
     float chickenLifeTime = 8f;
+    
 
     void OnTriggerEnter(Collider other)
     {
@@ -14,8 +15,10 @@ public class ChickenBehavior : MonoBehaviour
             transform.SetParent(null);
             hitByCow = true;
             Invoke("RemoveAfterHit", chickenLifeTime);
-            
+            // added TimeIsUp() method for ending game early when hitting Chicken
+           
         }
+
     }
 
     // direction coords of flying chicken
