@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
     /// https://www.youtube.com/watch?v=tEsuLTpz_DU&t=13s&ab_channel=Tarodev
     /// </summary>
     
-    [SerializeField] AudioSource bgm, moo, gunshot, running, cowbell, chicken, milkshake;
+    [SerializeField] AudioSource bgm, moo, gunshot, running, cowbell, chicken, milkshake, chickenWarning;
     public static SoundManager Instance;
 
     
@@ -35,6 +35,8 @@ public class SoundManager : MonoBehaviour
     public void GunshotSound() => gunshot.PlayOneShot(gunshot.clip);
     public void CowbellSound() => cowbell.PlayOneShot(cowbell.clip);
     public void ChickenSound() => chicken.PlayOneShot(chicken.clip);
+
+    public void ChickenWarningSound() => chickenWarning.PlayOneShot(chickenWarning.clip);
 
     public void MilkshakeSound()
     {

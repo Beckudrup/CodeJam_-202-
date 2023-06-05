@@ -36,5 +36,4 @@ public class ChickenBehavior : MonoBehaviour
     }
 }
 
-/// ideas: 1-sound invoke of getting close to chicken, volume getting louder??
-/// 2-Need to connect chicken with endgame if hit. 
+
