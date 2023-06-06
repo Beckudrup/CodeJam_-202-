@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     [SerializeField] GameObject leftButton, rightButton, grabText;
     [HideInInspector] public bool leftButtonPressed, rightButtonPressed;
 
-    bool gameStarted;
+    public bool gameStarted;
     // Update is called once per frame
     void Awake()
     {
