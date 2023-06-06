@@ -23,7 +23,7 @@ public class DayCycle : MonoBehaviour
     void ColorChange() => lt.color = Color.Lerp(color0, color1, Mathf.PingPong(Time.time, duration) / duration);
     
         // Color.RGBToHSV(new Color(redValue,greenValue,blueValue,alphaValue),
-        //    out float hueColor, out float saturationColor, out float valueColor);
+        // out float hueColor, out float saturationColor, out float valueColor);
         // lt.color = Color.HSVToRGB(hueColor, saturationColor, valueColor);
         
         // float t = Mathf.PingPong(Time.time, duration) / duration;
